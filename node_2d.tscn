@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2rq1xbrjlk7w"]
+[gd_scene load_steps=7 format=3 uid="uid://d2rq1xbrjlk7w"]
 
 [ext_resource type="PackedScene" uid="uid://df707arfrqces" path="res://jugador.tscn" id="1_3dxg7"]
 [ext_resource type="Texture2D" uid="uid://cmmfbk12anugo" path="res://Sprites/Bridge.png" id="3_8u8hm"]
 [ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Placeholders/SquareWithBorder.png" id="3_epja6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5n4jl"]
+rough = true
+absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tgh3"]
 custom_solver_bias = 0.262
@@ -14,10 +18,11 @@ size = Vector2(87, 87)
 [node name="Escena" type="Node2D"]
 
 [node name="Jugador" parent="." instance=ExtResource("1_3dxg7")]
-position = Vector2(-196, -208)
+position = Vector2(-196, -205)
 
 [node name="Suelo" type="StaticBody2D" parent="."]
 position = Vector2(48, 1008)
+physics_material_override = SubResource("PhysicsMaterial_5n4jl")
 constant_linear_velocity = Vector2(0.595, 3.88)
 
 [node name="Sprite" type="Sprite2D" parent="Suelo"]
@@ -56,3 +61,5 @@ offset_right = -887.0
 offset_bottom = -984.0
 theme_override_font_sizes/normal_font_size = 351
 text = "Hola que tal"
+
+[editable path="Jugador"]

@@ -11,8 +11,8 @@ public partial class PlayerMovement : CharacterBody2D
 	//private float? _boostTimer = null;
 	[Export] private float boostMultiplier = 1f;
 
-	private float _xAxis = 0;
-	private float _yAxis = 0;
+	private float _xAxis = 0f;
+	private float _yAxis = 0f;
 	private float _timeToMaxAxis = 0.2f;
 	
 	
@@ -23,33 +23,39 @@ public partial class PlayerMovement : CharacterBody2D
 
 	public override void _Process(double delta)
 	{   
-		_xAxis = Mathf.MoveToward(_xAxis,Input.GetAxis("ui_left","ui_right"),(float)delta / _timeToMaxAxis);
-		_yAxis = Mathf.MoveToward(_yAxis, Input.GetAxis("ui_down", "ui_up"), (float)delta / _timeToMaxAxis);
+		//_xAxis = Mathf.Lerp(_xAxis,Input.GetAxis("ui_left","ui_right"),(float)delta / _timeToMaxAxis);
+		//_yAxis = Mathf.Lerp(_yAxis, Input.GetAxis("ui_down", "ui_up"), (float)delta / _timeToMaxAxis);
+
+		_xAxis = Input.GetAxis("ui_left", "ui_right");
+		_yAxis = Input.GetAxis("ui_down", "ui_up");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{	 
-		float turnAmount = _xAxis * turnSpeed * (float)delta;
-		float moveAmount = _yAxis * carSpeed * boostMultiplier * (float)delta;
 
-			
 		
+		float turnAmount = _xAxis * turnSpeed * (float)delta;
+		float moveAmount = _yAxis * carSpeed * boostMultiplier;
 		
 		RotationDegrees += turnAmount * Input.GetAxis("ui_down","ui_up");
-		//Position.Rotated()
-		Transform = Transform.TranslatedLocal(new Vector2(0,-moveAmount));
-
+		Velocity = GetRealVelocity().Lerp(Vector2.FromAngle(Mathf.DegToRad(RotationDegrees-90)) * moveAmount,(float) delta);
 		MoveAndSlide(); // Gestionar las colisiones
 
-		KinematicCollision2D collision = GetLastSlideCollision();
+		Debug.Print(GetRealVelocity().ToString());
+
 		
-		if(collision!=null)
-			Debug.Print("TAS CHOCAO");
-		//Mathf.MoveToward
-		//Rotation
+		KinematicCollision2D collision = GetLastSlideCollision();
+
+		if (collision != null)
+			Debug.Print("YOU IT A WALL");
 	}
-	
+
+	public override void _Draw()
+	{
+		DrawLine(Position,Vector2.FromAngle(Mathf.DegToRad(RotationDegrees-90)),Colors.Red);
+		DrawLine(Position,Velocity,Colors.Red);
+	}
 }
 
 
