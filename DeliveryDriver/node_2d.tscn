@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://PlayerMovement.cs" id="1_2q0nf"]
 [ext_resource type="Texture2D" uid="uid://d4lfb1oropdf4" path="res://Sprites/Car 1.png" id="2_1oalr"]
 [ext_resource type="Texture2D" uid="uid://cmmfbk12anugo" path="res://Sprites/Bridge.png" id="3_8u8hm"]
-[ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Placeholders/SquareWithBorder.png" id="3_epja6"]
 [ext_resource type="Script" path="res://Package.cs" id="3_yctfu"]
+[ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Sprites/SquareWithBorder.png" id="4_oum4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4r1j"]
 size = Vector2(158, 353)
@@ -46,7 +46,7 @@ script = ExtResource("3_yctfu")
 [node name="Sprite" type="Sprite2D" parent="Customer"]
 self_modulate = Color(0.0666667, 0.905882, 0.913725, 1)
 scale = Vector2(0.345, 0.345)
-texture = ExtResource("3_epja6")
+texture = ExtResource("4_oum4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Customer"]
 shape = SubResource("RectangleShape2D_5nwh1")
@@ -87,7 +87,7 @@ script = ExtResource("3_yctfu")
 [node name="SquareWithBorder" type="Sprite2D" parent="Customer2"]
 self_modulate = Color(0.0666667, 0.905882, 0.913725, 1)
 scale = Vector2(0.345, 0.345)
-texture = ExtResource("3_epja6")
+texture = ExtResource("4_oum4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Customer2"]
 shape = SubResource("RectangleShape2D_5nwh1")

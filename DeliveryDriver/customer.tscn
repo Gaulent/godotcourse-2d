@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://2exa5n6vseoq"]
 
 [ext_resource type="Script" path="res://Package.cs" id="1_bygfc"]
-[ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Placeholders/SquareWithBorder.png" id="2_n80a7"]
+[ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Sprites/SquareWithBorder.png" id="2_n80a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nwh1"]
 size = Vector2(87, 87)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clkfworuvu5dd"
-path="res://.godot/imported/Capsule.png-39ae6c2d1964f624a81e9b7825b2055b.ctex"
+uid="uid://trt4241br4dm"
+path="res://.godot/imported/SquareWithBorder.png-1d0b4a795bde1ad3ef49d976b94141bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Placeholders/Capsule.png"
-dest_files=["res://.godot/imported/Capsule.png-39ae6c2d1964f624a81e9b7825b2055b.ctex"]
+source_file="res://Sprites/SquareWithBorder.png"
+dest_files=["res://.godot/imported/SquareWithBorder.png-1d0b4a795bde1ad3ef49d976b94141bb.ctex"]
 
 [params]
 
