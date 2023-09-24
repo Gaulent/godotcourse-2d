@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://fyw2kkfrmad3"]
+
+[ext_resource type="Script" path="res://_Scripts/Package.cs" id="1_psu20"]
+[ext_resource type="Texture2D" uid="uid://trt4241br4dm" path="res://Sprites/SquareWithBorder.png" id="2_6jv2b"]
+[ext_resource type="PackedScene" uid="uid://dyund0xdcr8qi" path="res://Scene/respawnable.tscn" id="3_srqrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nwh1"]
+size = Vector2(87, 87)
+
+[node name="Package" type="Area2D"]
+script = ExtResource("1_psu20")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.705882, 0.443137, 0.952941, 1)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("2_6jv2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5nwh1")
+
+[node name="Respawnable" parent="." instance=ExtResource("3_srqrv")]

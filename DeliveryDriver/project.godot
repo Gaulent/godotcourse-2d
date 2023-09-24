@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManagerNode="*res://GameManager.cs"
+GameManagerNode="*res://_Scripts/GameManager.cs"
 
 [display]
 

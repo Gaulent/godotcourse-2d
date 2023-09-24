@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyund0xdcr8qi"]
+
+[ext_resource type="Script" path="res://_Scripts/Respawnable.cs" id="1_hiqxr"]
+
+[node name="Respawnable" type="Node" node_paths=PackedStringArray("sprite", "collisionShape2D")]
+script = ExtResource("1_hiqxr")
+sprite = NodePath("")
+collisionShape2D = NodePath("")

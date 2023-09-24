@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://br0t1lgofw4qx"]
+
+[ext_resource type="Script" path="res://_Scripts/Boost.cs" id="1_p04nh"]
+[ext_resource type="Texture2D" uid="uid://d25pvy15oaghj" path="res://Sprites/CircleWithBorder.png" id="2_slqca"]
+[ext_resource type="PackedScene" uid="uid://dyund0xdcr8qi" path="res://Scene/respawnable.tscn" id="3_4veub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccb3p"]
+radius = 43.55
+
+[node name="Boost" type="Area2D"]
+script = ExtResource("1_p04nh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.4, 0.85098, 0.396078, 1)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("2_slqca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ccb3p")
+
+[node name="Respawnable" parent="." instance=ExtResource("3_4veub")]

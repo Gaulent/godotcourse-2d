@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 public partial class PlayerMovement : CharacterBody2D
 {
@@ -14,14 +15,15 @@ public partial class PlayerMovement : CharacterBody2D
 	private float _xAxis = 0f;
 	private float _yAxis = 0f;
 	private float _timeToMaxAxis = 0.2f;
-	
-	
+
+	private Timer boostTimer;
 	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		
+		boostTimer = GetNode<Timer>("BoostTimer");
+		boostTimer.Timeout += RestoreSpeed;
 	}
 
 	public override void _Process(double delta)
@@ -46,17 +48,25 @@ public partial class PlayerMovement : CharacterBody2D
 
 		KinematicCollision2D collision = GetLastSlideCollision();
 
-		/*if (collision != null)
-			Debug.Print("YOU IT A WALL");*/
+		if (collision != null)
+		{
+			Node collideNode = (Node)collision.GetCollider();
+			if (collideNode.IsInGroup("Obstacle"))
+				SpeedUp(5f, 0.5f);
+		}
 	}
-
-	public void PackagePickUp()
-	{
-		gotPackage = true;
-	}
-
-
 	
+	public void SpeedUp(float boostTime, float boostMultiplier)
+	{
+		this.boostMultiplier = boostMultiplier;
+		boostTimer.WaitTime = boostTime;
+		boostTimer.Start();
+	}
+	
+	private void RestoreSpeed()
+	{
+		boostMultiplier = 1f;
+	}
 
 }
 
