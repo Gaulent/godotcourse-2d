@@ -41,19 +41,21 @@ texture = ExtResource("3_8u8hm")
 visible = false
 shape = SubResource("RectangleShape2D_2tgh3")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 344.0
-offset_top = 34.0
-offset_right = 646.0
-offset_bottom = 212.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = -3080.0
-offset_top = -1448.0
-offset_right = -887.0
-offset_bottom = -984.0
-theme_override_font_sizes/normal_font_size = 351
-text = "Hola que tal"
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 209.0
+offset_bottom = 103.0
+theme_override_font_sizes/normal_font_size = 56
+text = "0"
