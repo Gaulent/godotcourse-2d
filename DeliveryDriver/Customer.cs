@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-public partial class Package : Area2D
+public partial class Customer : Area2D
 {
 	public float timeToReturn = 5f;
 
@@ -20,10 +20,11 @@ public partial class Package : Area2D
 		{
 			var player = (PlayerMovement)node;
 
-			if (!player.gotPackage) // TODO: Continuar la logica
+			if (player.gotPackage) // TODO: Continuar la logica
 			{
-				player.PackagePickUp();
+				player.gotPackage = false;
 				DisablePickup();
+				GameManager.AddPoints();
 			}
 		}
 	}

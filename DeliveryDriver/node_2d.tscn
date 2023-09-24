@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2rq1xbrjlk7w"]
+[gd_scene load_steps=11 format=3 uid="uid://d2rq1xbrjlk7w"]
 
 [ext_resource type="Script" path="res://PlayerMovement.cs" id="1_2q0nf"]
+[ext_resource type="Script" path="res://GameManager.cs" id="1_mwe7f"]
 [ext_resource type="Texture2D" uid="uid://d4lfb1oropdf4" path="res://Sprites/Car 1.png" id="2_1oalr"]
 [ext_resource type="Texture2D" uid="uid://cmmfbk12anugo" path="res://Sprites/Bridge.png" id="3_8u8hm"]
 [ext_resource type="Script" path="res://Package.cs" id="3_yctfu"]
@@ -21,6 +22,7 @@ custom_solver_bias = 0.262
 size = Vector2(2987, 1487)
 
 [node name="Escena" type="Node2D"]
+script = ExtResource("1_mwe7f")
 
 [node name="Jugador" type="CharacterBody2D" parent="."]
 z_index = 1
@@ -40,7 +42,7 @@ shape = SubResource("RectangleShape2D_k4r1j")
 zoom = Vector2(0.225, 0.225)
 
 [node name="Customer" type="Area2D" parent="."]
-position = Vector2(1095, 0)
+position = Vector2(-269, -488)
 script = ExtResource("3_yctfu")
 
 [node name="Sprite" type="Sprite2D" parent="Customer"]
@@ -49,6 +51,18 @@ scale = Vector2(0.345, 0.345)
 texture = ExtResource("4_oum4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Customer"]
+shape = SubResource("RectangleShape2D_5nwh1")
+
+[node name="Package" type="Area2D" parent="."]
+position = Vector2(875, -224)
+script = ExtResource("3_yctfu")
+
+[node name="Sprite" type="Sprite2D" parent="Package"]
+self_modulate = Color(0.705882, 0.443137, 0.952941, 1)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("4_oum4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Package"]
 shape = SubResource("RectangleShape2D_5nwh1")
 
 [node name="Suelo" type="StaticBody2D" parent="."]
@@ -79,15 +93,3 @@ offset_right = -887.0
 offset_bottom = -984.0
 theme_override_font_sizes/normal_font_size = 351
 text = "Hola que tal"
-
-[node name="Customer2" type="Area2D" parent="."]
-position = Vector2(758, -211)
-script = ExtResource("3_yctfu")
-
-[node name="SquareWithBorder" type="Sprite2D" parent="Customer2"]
-self_modulate = Color(0.0666667, 0.905882, 0.913725, 1)
-scale = Vector2(0.345, 0.345)
-texture = ExtResource("4_oum4d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Customer2"]
-shape = SubResource("RectangleShape2D_5nwh1")

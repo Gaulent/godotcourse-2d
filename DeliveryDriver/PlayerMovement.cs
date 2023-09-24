@@ -53,8 +53,9 @@ public partial class PlayerMovement : CharacterBody2D
 	public void PackagePickUp()
 	{
 		gotPackage = true;
-		Debug.Print("Paquete pillado");
 	}
+
+
 	
 
 }

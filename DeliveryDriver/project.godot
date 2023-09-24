@@ -15,6 +15,10 @@ run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManagerSingleton="*res://GameManager.cs"
+
 [display]
 
 window/size/viewport_width=640
@@ -31,6 +35,5 @@ project/assembly_name="Delivery Driver"
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.0352941, 0.368627, 0.0509804, 1)
