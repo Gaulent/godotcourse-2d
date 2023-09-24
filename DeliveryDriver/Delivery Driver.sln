@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delivery Driver", "Delivery Driver.csproj", "{3B364C38-4481-4D86-BC35-F26986D8CC67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delivery Driver", "Delivery Driver.csproj", "{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{3B364C38-4481-4D86-BC35-F26986D8CC67}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{1346DE4D-06EA-4676-A7AD-90942A8D8C5E}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
