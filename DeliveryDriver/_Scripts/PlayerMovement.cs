@@ -10,13 +10,25 @@ public partial class PlayerMovement : CharacterBody2D
 	[Export] private float turnSpeed = 180f;
 	[Export] public bool gotPackage = false;
 	//private float? _boostTimer = null;
-	[Export] private float boostMultiplier = 1f;
+	[Export] private float _boostMultiplier = 1f;
+	
+	public float BoostMultiplier
+	{
+		get => _boostMultiplier;
+		set
+		{
+			_boostMultiplier = value;
+			onSpeedChange.Invoke(value);
+		}
+	}
 
 	private float _xAxis = 0f;
 	private float _yAxis = 0f;
 	private float _timeToMaxAxis = 0.2f;
 
 	private Timer boostTimer;
+
+	public Action<float> onSpeedChange;
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -39,7 +51,7 @@ public partial class PlayerMovement : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{	 
 		float turnAmount = _xAxis * turnSpeed * (float)delta;
-		float moveAmount = _yAxis * carSpeed * boostMultiplier * (float)delta;
+		float moveAmount = _yAxis * carSpeed * BoostMultiplier * (float)delta;
 		
 		RotationDegrees += turnAmount * _yAxis;
 		Transform = Transform.TranslatedLocal(new Vector2(0,-moveAmount));
@@ -58,14 +70,14 @@ public partial class PlayerMovement : CharacterBody2D
 	
 	public void SpeedUp(float boostTime, float boostMultiplier)
 	{
-		this.boostMultiplier = boostMultiplier;
+		BoostMultiplier = boostMultiplier;
 		boostTimer.WaitTime = boostTime;
 		boostTimer.Start();
 	}
 	
 	private void RestoreSpeed()
 	{
-		boostMultiplier = 1f;
+		BoostMultiplier = 1f;
 	}
 
 }

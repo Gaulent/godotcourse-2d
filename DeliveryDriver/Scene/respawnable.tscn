@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" path="res://_Scripts/Respawnable.cs" id="1_hiqxr"]
 
-[node name="Respawnable" type="Node" node_paths=PackedStringArray("sprite", "collisionShape2D")]
+[node name="Respawnable" type="Node"]
 script = ExtResource("1_hiqxr")
-sprite = NodePath("")
-collisionShape2D = NodePath("")

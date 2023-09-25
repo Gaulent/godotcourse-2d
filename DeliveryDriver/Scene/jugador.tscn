@@ -1,15 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://nsec8ll6q4m"]
+[gd_scene load_steps=5 format=3 uid="uid://nsec8ll6q4m"]
 
 [ext_resource type="Script" path="res://_Scripts/PlayerMovement.cs" id="1_bqy7s"]
 [ext_resource type="Texture2D" uid="uid://d4lfb1oropdf4" path="res://Sprites/Car 1.png" id="2_dkemx"]
+[ext_resource type="Script" path="res://_Scripts/CamaraController.cs" id="3_ch6bi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4r1j"]
 size = Vector2(158, 353)
 
 [node name="Jugador" type="CharacterBody2D"]
 z_index = 1
-position = Vector2(1673, -13)
-rotation = -1.58142
 motion_mode = 1
 script = ExtResource("1_bqy7s")
 
@@ -17,10 +16,10 @@ script = ExtResource("1_bqy7s")
 texture = ExtResource("2_dkemx")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_k4r1j")
 
 [node name="Camara" type="Camera2D" parent="."]
 zoom = Vector2(0.225, 0.225)
+script = ExtResource("3_ch6bi")
 
 [node name="BoostTimer" type="Timer" parent="."]
