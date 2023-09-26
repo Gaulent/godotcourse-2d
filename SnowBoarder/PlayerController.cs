@@ -1,39 +1,33 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
-public partial class PlayerController : CharacterBody2D
+public partial class PlayerController : RigidBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
-
-	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
-	public override void _PhysicsProcess(double delta)
+	private float _turnAmount = 0;
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-		Vector2 velocity = Velocity;
+	}
 
-		// Add the gravity.
-		if (!IsOnFloor())
-			velocity.Y += gravity * (float)delta;
+	public override void _Process(double delta)
+	{
+		_turnAmount = Input.GetAxis("ui_left", "ui_right");
+	}
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+	public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+	{
+		GD.Print(state.GetContactCount());
+		
+		for (int i=0; i < state.GetContactCount(); i++)
 		{
-			velocity.X = direction.X * Speed;
+			GD.Print(state.GetContactLocalNormal(i));
+			state.ApplyForce(state.GetContactLocalNormal(i).Rotated(Mathf.Pi/2f)  * 5000f);
 		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+		
+		state.ApplyTorque(_turnAmount * 1000000f);
 
-		Velocity = velocity;
-		MoveAndSlide();
+		state.AngularVelocity = Mathf.Clamp(state.AngularVelocity, -50f, 50f);
 	}
 }

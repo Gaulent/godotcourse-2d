@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ujrqlcctglg"]
+
+[ext_resource type="Script" path="res://PlayerController.cs" id="1_ns8e7"]
+[ext_resource type="Texture2D" uid="uid://0ci7e8en4hm" path="res://Sprites/Player/Boarder_Top.png" id="2_r5udu"]
+[ext_resource type="Texture2D" uid="uid://ct1ea1d7omrcd" path="res://Sprites/Player/Boarder_Bottom.png" id="3_40oj4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsswi"]
+radius = 36.3409
+height = 585.217
+
+[node name="Player" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ns8e7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.466583, -5.61349)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hsswi")
+
+[node name="Sprite Up" type="Sprite2D" parent="."]
+position = Vector2(-43.5334, -213.614)
+rotation = -0.0715585
+texture = ExtResource("2_r5udu")
+
+[node name="Sprite Down" type="Sprite2D" parent="."]
+position = Vector2(0.466583, -92.6135)
+rotation = -0.0715585
+texture = ExtResource("3_40oj4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.15, 0.15)
