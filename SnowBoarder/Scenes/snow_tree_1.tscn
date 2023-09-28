@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7is2tgafj8j"]
+
+[ext_resource type="Texture2D" uid="uid://bn0wiuf8qcxdr" path="res://sprites/Snow-Tree-1.png" id="1_scdjf"]
+
+[node name="Snow-tree-1" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_scdjf")

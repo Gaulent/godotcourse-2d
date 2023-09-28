@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://coocne03fvrpy"
-path="res://.godot/imported/Finish+SFX.ogg-b48507a91976a7a40f4cf396b70ce4a5.oggvorbisstr"
+path="res://.godot/imported/Finish+SFX.ogg-29c585524bd80c77d26961606f5daa18.oggvorbisstr"
 
 [deps]
 
-source_file="res://Audio/Finish+SFX.ogg"
-dest_files=["res://.godot/imported/Finish+SFX.ogg-b48507a91976a7a40f4cf396b70ce4a5.oggvorbisstr"]
+source_file="res://audio/Finish+SFX.ogg"
+dest_files=["res://.godot/imported/Finish+SFX.ogg-29c585524bd80c77d26961606f5daa18.oggvorbisstr"]
 
 [params]
 

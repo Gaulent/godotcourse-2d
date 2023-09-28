@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k8urr0nnuvbp"
-path="res://.godot/imported/Snow-Rock-2.png-3bca9adf9372c970f4bc207ab40fa2af.ctex"
+path="res://.godot/imported/Snow-Rock-2.png-bfb15cc35da22cd5311b82116f3dfdbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Snow-Rock-2.png"
-dest_files=["res://.godot/imported/Snow-Rock-2.png-3bca9adf9372c970f4bc207ab40fa2af.ctex"]
+source_file="res://sprites/Snow-Rock-2.png"
+dest_files=["res://.godot/imported/Snow-Rock-2.png-bfb15cc35da22cd5311b82116f3dfdbe.ctex"]
 
 [params]
 

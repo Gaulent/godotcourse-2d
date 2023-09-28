@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ci7e8en4hm"
-path="res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"
+uid="uid://1bj6pt834f0w"
+path="res://.godot/imported/CircleWithBorder.png-b684bb98d7b458821b7e80af5ac84332.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player/Boarder_Top.png"
-dest_files=["res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"]
+source_file="res://sprites/CircleWithBorder.png"
+dest_files=["res://.godot/imported/CircleWithBorder.png-b684bb98d7b458821b7e80af5ac84332.ctex"]
 
 [params]
 

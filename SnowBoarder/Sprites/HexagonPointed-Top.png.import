@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ci7e8en4hm"
-path="res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"
+uid="uid://codnb3dw50oik"
+path="res://.godot/imported/HexagonPointed-Top.png-d0786a3c5974f2a9f3763c20cf683891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player/Boarder_Top.png"
-dest_files=["res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"]
+source_file="res://sprites/HexagonPointed-Top.png"
+dest_files=["res://.godot/imported/HexagonPointed-Top.png-d0786a3c5974f2a9f3763c20cf683891.ctex"]
 
 [params]
 

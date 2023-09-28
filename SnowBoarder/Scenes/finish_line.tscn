@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6nd4srrhfr1r"]
+
+[ext_resource type="Script" path="res://scripts/FinishLine.cs" id="1_rwwwi"]
+[ext_resource type="Texture2D" uid="uid://de1ipgrty0tqw" path="res://sprites/SquareWithBorder.png" id="2_0u724"]
+[ext_resource type="Texture2D" uid="uid://1bj6pt834f0w" path="res://sprites/CircleWithBorder.png" id="3_kbx6m"]
+[ext_resource type="AudioStream" uid="uid://coocne03fvrpy" path="res://audio/Finish+SFX.ogg" id="4_y4n1p"]
+[ext_resource type="Texture2D" uid="uid://blupmo5a0ya4q" path="res://sprites/IsometricDiamond.png" id="5_08r1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk8s1"]
+size = Vector2(265, 2412)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jcpph"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_kex78"]
+min_value = -90.0
+max_value = 90.0
+_data = [Vector2(0, 35.0526), 0.0, 0.0, 0, 0, Vector2(1, 18), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7kf2y"]
+curve = SubResource("Curve_kex78")
+
+[sub_resource type="Gradient" id="Gradient_rkrxd"]
+offsets = PackedFloat32Array(0, 0.503185)
+colors = PackedColorArray(1, 0, 0, 1, 0.493368, 0.00141071, 0.679958, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x1wfa"]
+gradient = SubResource("Gradient_rkrxd")
+
+[sub_resource type="Curve" id="Curve_odykq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aunde"]
+curve = SubResource("Curve_odykq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_isxya"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 97.81
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+flatness = 0.21
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 424.53
+initial_velocity_max = 424.53
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 88.68
+angle_min = 10.0
+angle_max = 50.0
+angle_curve = SubResource("CurveTexture_7kf2y")
+scale_curve = SubResource("CurveTexture_aunde")
+color_ramp = SubResource("GradientTexture1D_x1wfa")
+hue_variation_min = -0.33
+hue_variation_max = 0.13
+turbulence_noise_strength = 11.19
+turbulence_noise_speed = Vector3(0.295, 0, 0)
+anim_speed_max = 3.17
+
+[node name="Finish Line" type="Area2D"]
+script = ExtResource("1_rwwwi")
+
+[node name="SquareWithBorder" type="Sprite2D" parent="."]
+self_modulate = Color(0.717647, 0, 0.0745098, 1)
+position = Vector2(0, -956)
+scale = Vector2(1, 7.46579)
+texture = ExtResource("2_0u724")
+
+[node name="CircleWithBorder" type="Sprite2D" parent="."]
+self_modulate = Color(0.717647, 0, 0.0745098, 1)
+position = Vector2(0, -2117)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("3_kbx6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -1196)
+shape = SubResource("RectangleShape2D_kk8s1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y4n1p")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_jcpph")
+position = Vector2(0, -2136)
+scale = Vector2(3, 3)
+emitting = false
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_isxya")
+texture = ExtResource("5_08r1f")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.7
+fixed_fps = 60
+visibility_rect = Rect2(-10000, -10000, 20000, 20000)
+trail_lifetime = 2.66

@@ -26,12 +26,12 @@ public partial class PlayerController : RigidBody2D
 			for (int i=0; i < state.GetContactCount(); i++)
 			{
 				Vector2 forceDirection = state.GetContactLocalNormal(i).Rotated(Mathf.Pi / 2f);
-				state.ApplyForce(forceDirection  * 2000f);
+				state.ApplyForce(forceDirection  * 6000f);
 			}
 		}
 
 		// Solo puede rotar con 1 contacto o ninguno
-		if (state.GetContactCount() <= 1)
+		if (state.GetContactCount() >= 0)
 		{
 			CenterOfMass = _bodyCenter;
 			state.ApplyTorque(_turnAmount * 500000f);

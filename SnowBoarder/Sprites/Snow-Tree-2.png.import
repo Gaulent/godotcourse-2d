@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhkn4yav8fokb"
-path="res://.godot/imported/Snow-Tree-2.png-3ff872555729b89ee66a630d46b49af0.ctex"
+path="res://.godot/imported/Snow-Tree-2.png-2630efb6fc0d6b0fd7f4380d5d50a50c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Snow-Tree-2.png"
-dest_files=["res://.godot/imported/Snow-Tree-2.png-3ff872555729b89ee66a630d46b49af0.ctex"]
+source_file="res://sprites/Snow-Tree-2.png"
+dest_files=["res://.godot/imported/Snow-Tree-2.png-2630efb6fc0d6b0fd7f4380d5d50a50c.ctex"]
 
 [params]
 

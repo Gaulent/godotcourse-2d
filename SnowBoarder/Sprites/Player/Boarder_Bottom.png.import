@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct1ea1d7omrcd"
-path="res://.godot/imported/Boarder_Bottom.png-e6c72ccd9a185c62045ed965cb6e4ef7.ctex"
+path="res://.godot/imported/Boarder_Bottom.png-a8dbfa6b930b9e2da7217dfa7030a139.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Boarder_Bottom.png"
-dest_files=["res://.godot/imported/Boarder_Bottom.png-e6c72ccd9a185c62045ed965cb6e4ef7.ctex"]
+source_file="res://sprites/Player/Boarder_Bottom.png"
+dest_files=["res://.godot/imported/Boarder_Bottom.png-a8dbfa6b930b9e2da7217dfa7030a139.ctex"]
 
 [params]
 

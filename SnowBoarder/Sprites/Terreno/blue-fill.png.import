@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4nymdsx8rfsv"
-path="res://.godot/imported/blue-fill.png-fd317c0130b8e17efc60a13c4e63c871.ctex"
+path="res://.godot/imported/blue-fill.png-d1ea590a54f36e7073a3d1749420268e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Terreno/blue-fill.png"
-dest_files=["res://.godot/imported/blue-fill.png-fd317c0130b8e17efc60a13c4e63c871.ctex"]
+source_file="res://sprites/Terreno/blue-fill.png"
+dest_files=["res://.godot/imported/blue-fill.png-d1ea590a54f36e7073a3d1749420268e.ctex"]
 
 [params]
 

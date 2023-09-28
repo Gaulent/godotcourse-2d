@@ -1,49 +1,61 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctmoii43sfcgy"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.cs" id="1_fmivw"]
-[ext_resource type="Texture2D" uid="uid://0ci7e8en4hm" path="res://Sprites/Player/Boarder_Top.png" id="2_r2lvl"]
-[ext_resource type="Texture2D" uid="uid://ct1ea1d7omrcd" path="res://Sprites/Player/Boarder_Bottom.png" id="3_01x8t"]
+[ext_resource type="Texture2D" uid="uid://0ci7e8en4hm" path="res://sprites/Player/Boarder_Top.png" id="2_1rql2"]
+[ext_resource type="Texture2D" uid="uid://ct1ea1d7omrcd" path="res://sprites/Player/Boarder_Bottom.png" id="3_nqs77"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4um7y"]
 friction = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsswi"]
-radius = 36.3409
+radius = 88.0
 height = 585.217
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v4xjo"]
 radius = 96.78
 height = 340.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 center_of_mass_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_4um7y")
 gravity_scale = 3.0
-max_contacts_reported = 2
+max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_fmivw")
 
 [node name="Snowboard" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -42)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hsswi")
 
 [node name="Sprite Up" type="Sprite2D" parent="."]
 position = Vector2(-51.5334, -218.614)
 rotation = -0.0715585
-texture = ExtResource("2_r2lvl")
+texture = ExtResource("2_1rql2")
 
 [node name="Sprite Down" type="Sprite2D" parent="."]
 position = Vector2(-7.53345, -97.612)
 rotation = -0.0715585
-texture = ExtResource("3_01x8t")
+texture = ExtResource("3_nqs77")
 
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(-30.467, -177.387)
-
-[node name="Camera2D" type="Camera2D" parent="Center"]
-zoom = Vector2(0.15, 0.15)
 
 [node name="Body Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-5.00003, -216)
 rotation = 0.476836
 shape = SubResource("CapsuleShape2D_v4xjo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -177.387)
+zoom = Vector2(0.1, 0.1)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
+drag_vertical_offset = 1.0
+drag_left_margin = 0.78
+drag_top_margin = 0.52
+drag_right_margin = 0.06
+drag_bottom_margin = 0.13
+editor_draw_limits = true
+editor_draw_drag_margin = true

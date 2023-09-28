@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ci7e8en4hm"
-path="res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"
+uid="uid://blupmo5a0ya4q"
+path="res://.godot/imported/IsometricDiamond.png-2fe45051e61402f997410637c9c4ee64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player/Boarder_Top.png"
-dest_files=["res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"]
+source_file="res://sprites/IsometricDiamond.png"
+dest_files=["res://.godot/imported/IsometricDiamond.png-2fe45051e61402f997410637c9c4ee64.ctex"]
 
 [params]
 

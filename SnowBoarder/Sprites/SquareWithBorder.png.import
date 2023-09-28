@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ci7e8en4hm"
-path="res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"
+uid="uid://de1ipgrty0tqw"
+path="res://.godot/imported/SquareWithBorder.png-7e8450ff516bd76cd953fac6a6e3c31d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player/Boarder_Top.png"
-dest_files=["res://.godot/imported/Boarder_Top.png-d069b67aa69638e67475ab46b1de0e93.ctex"]
+source_file="res://sprites/SquareWithBorder.png"
+dest_files=["res://.godot/imported/SquareWithBorder.png-7e8450ff516bd76cd953fac6a6e3c31d.ctex"]
 
 [params]
 
