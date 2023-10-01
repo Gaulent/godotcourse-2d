@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://x1r5cl7jk4gw"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_fybfx"]
+
+[resource]
+script = ExtResource("1_fybfx")
+Strength = 3
+Defense = 21
+Speed = 0

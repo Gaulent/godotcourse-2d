@@ -10,19 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Snow Boarder"
-run/main_scene="res://scenes/main.tscn"
+config/name="Quiz Master"
+run/main_scene="res://main_scene.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 
 [dotnet]
 
-project/assembly_name="Snow Boarder"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
+project/assembly_name="Quiz Master"

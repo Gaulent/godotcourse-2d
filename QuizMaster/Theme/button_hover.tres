@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ber4kb0hvh3sa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_se54y"]
+load_path = "res://.godot/imported/neon_square_blue.png-b9414fd803e35b247bc171d48d91bcda.ctex"
+
+[resource]
+texture = SubResource("CompressedTexture2D_se54y")
+texture_margin_left = 58.0
+texture_margin_top = 47.0
+texture_margin_right = 60.0
+texture_margin_bottom = 55.0
+region_rect = Rect2(15, 17, 1001, 995)
+modulate_color = Color(0.572549, 0.572549, 0.572549, 1)

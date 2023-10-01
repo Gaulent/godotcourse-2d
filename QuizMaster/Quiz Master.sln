@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz Master", "Quiz Master.csproj", "{B15B1671-F729-4AAE-A622-5679C804E6FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

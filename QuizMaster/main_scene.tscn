@@ -1,0 +1,211 @@
+[gd_scene load_steps=5 format=3 uid="uid://3i0m31hw2hfb"]
+
+[ext_resource type="Texture2D" uid="uid://46yd1ja71a4" path="res://Art/background.png" id="1_c76m6"]
+[ext_resource type="Theme" uid="uid://cnpxkfkly6xry" path="res://Theme/theme.tres" id="1_uwtsv"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_3nspe"]
+[ext_resource type="Texture2D" uid="uid://cl66ka0t1qq4g" path="res://Art/neon_round_orange.png" id="5_v2ckk"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_buttons", "_questionText")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwtsv")
+script = ExtResource("2_3nspe")
+_buttons = [NodePath("Button"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4")]
+_questionText = NodePath("Question/Label")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_c76m6")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -24.0
+offset_right = 1144.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 121
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Answer 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = 48.0
+offset_right = 1144.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 121
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Answer 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = 120.0
+offset_right = 1144.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 121
+
+[node name="Label" type="Label" parent="Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Answer 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = 192.0
+offset_right = 1144.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 121
+
+[node name="Label" type="Label" parent="Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Answer 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Question" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -176.0
+offset_right = 528.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Question"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "This box will contain the question text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0820313, 0.492188, 0.714844, 1)
+text = "QUIZ-I-COOL"
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 96.0
+offset_right = 296.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 33
+text = "Score: 100%"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 80.0
+offset_right = 883.0
+offset_bottom = 1115.0
+grow_horizontal = 0
+scale = Vector2(0.085, 0.085)
+value = 75.0
+fill_mode = 5
+texture_progress = ExtResource("5_v2ckk")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = -80.0
+offset_right = -96.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false

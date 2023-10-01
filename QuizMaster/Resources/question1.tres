@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://c3rpotoyw8xsr"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_f43o8"]
+
+[resource]
+script = ExtResource("1_f43o8")
+question = "What is the color of blood when it's inside your body?"
+answers = PackedStringArray("Blue", "White", "Red", "Green")
+rightAnswer = 2
