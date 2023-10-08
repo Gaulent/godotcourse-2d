@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn6ifc5bewp25"]
+
+[ext_resource type="Theme" uid="uid://cnpxkfkly6xry" path="res://Theme/theme.tres" id="1_nyu1w"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="3_u8x6e"]
+[ext_resource type="PackedScene" uid="uid://bpn6bfma5acrx" path="res://Scenes/UIManager.tscn" id="4_5ygau"]
+[ext_resource type="PackedScene" uid="uid://bowd1268uuybb" path="res://Scenes/GameOver.tscn" id="5_v78rk"]
+
+[node name="QuizMaster" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nyu1w")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("3_u8x6e")
+
+[node name="UIManager" parent="." instance=ExtResource("4_5ygau")]
+layout_mode = 1
+
+[node name="GameOverUI" parent="." instance=ExtResource("5_v78rk")]
+visible = false
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

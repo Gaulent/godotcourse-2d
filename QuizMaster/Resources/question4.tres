@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://dv00r5wkow8eh"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_f43o8"]
+
+[resource]
+script = ExtResource("1_f43o8")
+question = "What letter is not present anywhere on the periodic table of elements? "
+answers = PackedStringArray("Q", "J", "F", "X")
+rightAnswer = 1

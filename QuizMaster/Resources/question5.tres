@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://qykbeegbl3e8"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_f43o8"]
+
+[resource]
+script = ExtResource("1_f43o8")
+question = "Which of these animals has the ability to laugh? "
+answers = PackedStringArray("Dog", "Whale", "Bear", "Rat")
+rightAnswer = 3

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://ba3i7cpxp53pf"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_f43o8"]
+
+[resource]
+script = ExtResource("1_f43o8")
+question = "Which is the fastest bird in the world?"
+answers = PackedStringArray("Bald Eagle", "Peregrine Falcon", "Hummingbird", "Raven")
+rightAnswer = 1

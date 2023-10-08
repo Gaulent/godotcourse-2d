@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz Master", "Quiz Master.csproj", "{B15B1671-F729-4AAE-A622-5679C804E6FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz Master", "Quiz Master.csproj", "{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{B15B1671-F729-4AAE-A622-5679C804E6FF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{71F8E28E-9BEF-49ED-A813-1D324D2B2F89}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

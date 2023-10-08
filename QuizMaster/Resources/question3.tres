@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestionRes" load_steps=2 format=3 uid="uid://bp7ql77qkgndo"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionRes.cs" id="1_f43o8"]
+
+[resource]
+script = ExtResource("1_f43o8")
+question = "What is the tallest waterfall in the world? "
+answers = PackedStringArray("Angel Falls, Venezuela  ", "Niagara Falls, New York  ", "Wailua Falls, Hawaii  ", "Sutherland Falls, New Zealand  ")
+rightAnswer = 0
