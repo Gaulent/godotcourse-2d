@@ -12,9 +12,13 @@ config_version=5
 
 config/name="MyTileVania"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
 [dotnet]
 
 project/assembly_name="MyTileVania"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
