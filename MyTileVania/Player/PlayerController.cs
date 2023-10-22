@@ -52,7 +52,7 @@ public partial class PlayerController : CharacterBody2D
 	}
 	
 	
-
+	// TODO: Maquina de estados finitos?
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
