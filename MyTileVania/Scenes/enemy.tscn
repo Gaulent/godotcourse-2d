@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb4v822exhjpw"]
+
+[ext_resource type="Script" path="res://Enemy/EnemyController.cs" id="1_mgpiy"]
+[ext_resource type="Texture2D" uid="uid://casvobmf8vq1h" path="res://Enemy/SPA_Enemy_Right.png" id="2_0ya5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbr1e"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(10, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh2yv"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(48, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iv1v"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(86, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k25eg"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(124, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3trtn"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(162, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5x6k"]
+atlas = ExtResource("2_0ya5i")
+region = Rect2(200, 1, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbx2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbr1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh2yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iv1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k25eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3trtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5x6k")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
+size = Vector2(20, 18)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_mgpiy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_kbx2t")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.42792
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_h4jpw")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="LeftFoot" type="RayCast2D" parent="."]
+position = Vector2(-7, -5)
+target_position = Vector2(0, 17)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightFoot" type="RayCast2D" parent="."]
+position = Vector2(7, -5)
+target_position = Vector2(0, 17)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightHand" type="RayCast2D" parent="."]
+position = Vector2(7, -9)
+target_position = Vector2(8, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="LeftHand" type="RayCast2D" parent="."]
+position = Vector2(-7, -9)
+target_position = Vector2(-8, 0)
+collision_mask = 6
+hit_from_inside = true

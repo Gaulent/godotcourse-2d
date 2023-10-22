@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="MyTileVania"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
+
+[debug]
+
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.419608)
 
 [dotnet]
 
 project/assembly_name="MyTileVania"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Floor"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Pickups"
 
 [rendering]
 

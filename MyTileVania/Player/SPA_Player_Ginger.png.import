@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://casvobmf8vq1h"
-path="res://.godot/imported/SPA_Enemy_Right.png-a7aa9fb537f993ae82792204da53cf2f.ctex"
+uid="uid://c42x6tf1yxmi1"
+path="res://.godot/imported/SPA_Player_Ginger.png-f375f0c168fe20e8ce75b7a8d22e2824.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SPA_Enemy_Right.png"
-dest_files=["res://.godot/imported/SPA_Enemy_Right.png-a7aa9fb537f993ae82792204da53cf2f.ctex"]
+source_file="res://Player/SPA_Player_Ginger.png"
+dest_files=["res://.godot/imported/SPA_Player_Ginger.png-f375f0c168fe20e8ce75b7a8d22e2824.ctex"]
 
 [params]
 
