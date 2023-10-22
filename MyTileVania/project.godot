@@ -13,7 +13,11 @@ config_version=5
 config/name="MyTileVania"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="res://icon.svg"
+
+[autoload]
+
+SoundManager="*res://Managers/SoundManager.cs"
 
 [debug]
 
@@ -29,6 +33,7 @@ project/assembly_name="MyTileVania"
 2d_physics/layer_2="Floor"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Pickups"
+2d_physics/layer_5="Ladder"
 
 [rendering]
 

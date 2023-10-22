@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://quqdrx2lqvyx"
-path="res://.godot/imported/SPA_Rock_Grass_Water.png-5b2214643fc212d2bcc588580a63187b.ctex"
+uid="uid://cgjj664p7p1hj"
+path="res://.godot/imported/SPA_Coins.png-ad4029b6031441e07224f770d4a56dd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SPA_Rock_Grass_Water.png"
-dest_files=["res://.godot/imported/SPA_Rock_Grass_Water.png-5b2214643fc212d2bcc588580a63187b.ctex"]
+source_file="res://Pickups/SPA_Coins.png"
+dest_files=["res://.godot/imported/SPA_Coins.png-ad4029b6031441e07224f770d4a56dd3.ctex"]
 
 [params]
 

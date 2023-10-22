@@ -23,6 +23,12 @@ public partial class PlayerAnimator : AnimatedSprite2D
 			_ => FlipH
 		};
 
+		if (player._playerStatus == PlayerController.PlayerStatus.Climb)
+		{
+			Animation = "climbing";
+			return;
+		}
+		
 		Animation = player.direction!=0 ? "moving" : "idle";
 
 		if (!player.IsOnFloor())

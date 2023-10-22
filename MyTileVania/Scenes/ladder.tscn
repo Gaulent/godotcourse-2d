@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0htmaait13jb"]
+
+[ext_resource type="Texture2D" uid="uid://b0s4ui7w4fkgp" path="res://Tiles/SPA_Ladder.png" id="1_4k65x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soxix"]
+size = Vector2(22, 32)
+
+[node name="Ladder" type="Area2D"]
+collision_layer = 16
+
+[node name="SpaLadder" type="Sprite2D" parent="."]
+texture = ExtResource("1_4k65x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_soxix")

@@ -15,6 +15,7 @@ public partial class EnemyController : CharacterBody2D
 	private RayCast2D rightHand;
 	private bool facingRight = true;
 	private AnimatedSprite2D sprite;
+
 	
 	public override void _Ready()
 	{
@@ -52,4 +53,6 @@ public partial class EnemyController : CharacterBody2D
 			sprite.FlipH = !facingRight;
 		}		
 	}
+
+
 }

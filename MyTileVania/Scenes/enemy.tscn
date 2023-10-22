@@ -54,9 +54,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
-size = Vector2(20, 18)
+size = Vector2(20, 16)
 
 [node name="Enemy" type="CharacterBody2D"]
+position = Vector2(0, 15)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_mgpiy")
@@ -69,7 +70,7 @@ autoplay = "walking"
 frame_progress = 0.42792
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_h4jpw")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
