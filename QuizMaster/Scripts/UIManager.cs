@@ -29,10 +29,10 @@ public partial class UIManager : Control
 		_gameProgress = GetNode<ProgressBar>("ProgressBar");
 		_timer = GetNode<Timer>("../Timer");
 
-		_buttons[0].Pressed += Button1Pressed;
-		_buttons[1].Pressed += Button2Pressed;
-		_buttons[2].Pressed += Button3Pressed;
-		_buttons[3].Pressed += Button4Pressed;
+		_buttons[0].Pressed += () => SelectedResponse.Invoke(0);
+		_buttons[1].Pressed += () => SelectedResponse.Invoke(1);
+		_buttons[2].Pressed += () => SelectedResponse.Invoke(2);
+		_buttons[3].Pressed += () => SelectedResponse.Invoke(3);
 		
 		_myGM = GetNode<GameManager>("../GameManager");
 		_myGM.OnScoreChange += UpdateScore;
@@ -51,11 +51,6 @@ public partial class UIManager : Control
 	{
 		_timeRemaining.Value = _timer.TimeLeft * 100 / _timer.WaitTime;
 	}
-
-	public void Button1Pressed() => SelectedResponse.Invoke(0);
-	public void Button2Pressed() => SelectedResponse.Invoke(1);
-	public void Button3Pressed() => SelectedResponse.Invoke(2);
-	public void Button4Pressed() => SelectedResponse.Invoke(3);
 
 	public void SetQuestionText(string respuestaCorrecta)
 	{
