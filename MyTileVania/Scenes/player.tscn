@@ -168,9 +168,12 @@ size = Vector2(12, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkjsp"]
 size = Vector2(8.75, 4.5)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_coyoteTimer", "_areaDetector", "_hurtArea")]
 collision_mask = 7
 script = ExtResource("1_4irg2")
+_coyoteTimer = NodePath("CoyoteTime")
+_areaDetector = NodePath("Area2DDetector")
+_hurtArea = NodePath("Feet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

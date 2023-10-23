@@ -9,22 +9,12 @@ public partial class EnemyController : CharacterBody2D
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	private RayCast2D leftFoot;
-	private RayCast2D rightFoot;
-	private RayCast2D leftHand;
-	private RayCast2D rightHand;
+	[Export] private RayCast2D leftFoot;
+	[Export] private RayCast2D rightFoot;
+	[Export] private RayCast2D leftHand;
+	[Export] private RayCast2D rightHand;
 	private bool facingRight = true;
-	private AnimatedSprite2D sprite;
-
-	
-	public override void _Ready()
-	{
-		leftFoot = GetNode<RayCast2D>("LeftFoot");
-		rightFoot = GetNode<RayCast2D>("RightFoot");
-		leftHand = GetNode<RayCast2D>("LeftHand");
-		rightHand = GetNode<RayCast2D>("RightHand");
-		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-	}
+	[Export] private AnimatedSprite2D sprite;
 
 	public override void _PhysicsProcess(double delta)
 	{

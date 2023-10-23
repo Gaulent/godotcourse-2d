@@ -16,20 +16,20 @@ public partial class PlayerAnimator : AnimatedSprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		FlipH = player.direction switch
+		FlipH = player.Direction switch
 		{
 			< 0 => true,
 			> 0 => false,
 			_ => FlipH
 		};
 
-		if (player._playerStatus == PlayerController.PlayerStatus.Climb)
+		if (player.State == PlayerController.PlayerStatus.Climb)
 		{
 			Animation = "climbing";
 			return;
 		}
 		
-		Animation = player.direction!=0 ? "moving" : "idle";
+		Animation = player.Direction!=0 ? "moving" : "idle";
 
 		if (!player.IsOnFloor())
 		{

@@ -56,11 +56,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
 size = Vector2(20, 16)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite")]
 position = Vector2(0, 15)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_mgpiy")
+leftFoot = NodePath("LeftFoot")
+rightFoot = NodePath("RightFoot")
+leftHand = NodePath("LeftHand")
+rightHand = NodePath("RightHand")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -16)
