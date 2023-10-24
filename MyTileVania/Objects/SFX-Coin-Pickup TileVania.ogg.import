@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwne5q1wmwns3"
+path="res://.godot/imported/SFX-Coin-Pickup TileVania.ogg-3f0b36485143271e1c2787331f7a1037.oggvorbisstr"
+
+[deps]
+
+source_file="res://Objects/SFX-Coin-Pickup TileVania.ogg"
+dest_files=["res://.godot/imported/SFX-Coin-Pickup TileVania.ogg-3f0b36485143271e1c2787331f7a1037.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

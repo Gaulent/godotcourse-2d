@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctsh735xaimcq"
-path="res://.godot/imported/TileVania Mushroom.png-d99fbfb34c3ed20e062ddce16f4976b8.ctex"
+uid="uid://cgjj664p7p1hj"
+path="res://.godot/imported/SPA_Coins.png-a80fbdffcfdb2319ea1b7b001a6377b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileVania Mushroom.png"
-dest_files=["res://.godot/imported/TileVania Mushroom.png-d99fbfb34c3ed20e062ddce16f4976b8.ctex"]
+source_file="res://Objects/SPA_Coins.png"
+dest_files=["res://.godot/imported/SPA_Coins.png-a80fbdffcfdb2319ea1b7b001a6377b6.ctex"]
 
 [params]
 

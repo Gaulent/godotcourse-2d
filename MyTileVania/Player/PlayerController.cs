@@ -1,10 +1,11 @@
 using Godot;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 public partial class PlayerController : CharacterBody2D
 {
-	public enum PlayerStatus {Normal, Climb}
+	public enum PlayerStatus {Normal, Climb, Hurt}
 	public PlayerStatus State = PlayerStatus.Normal;
 	
 	[Export] private Timer _coyoteTimer;
@@ -37,11 +38,12 @@ public partial class PlayerController : CharacterBody2D
 			case PlayerStatus.Climb:
 				_PhysicsProcessClimb(delta);
 				break;
+			case PlayerStatus.Hurt:
+				_PhysicsProcessHurt(delta);
+				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-
-		HandleMovement();
 
 		if (IsOnFloor())
 			_coyoteTimer.Start();
@@ -69,12 +71,24 @@ public partial class PlayerController : CharacterBody2D
 				}
 				else
 				{
-					GD.Print("Te han dao");
+					GetHurt(collision.GetNormal());
 				}
 			}
 		}
 	}
 
+	// TODO: Mejorar. Referencia a Sprite. Maquina de estados?
+	private async void GetHurt(Vector2 normal)
+	{
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.Red;
+		State = PlayerStatus.Hurt;
+		Velocity = new Vector2(normal.X * _speed, _jumpVelocity) * 0.5f;
+		
+		await Task.Delay(TimeSpan.FromMilliseconds(300));
+		State = PlayerStatus.Normal;
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.White;
+	} 
+	
 	private void HandleMovement()
 	{
 		Vector2 velocity = Velocity;
@@ -103,6 +117,12 @@ public partial class PlayerController : CharacterBody2D
 			if ((IsOnFloor() || !_coyoteTimer.IsStopped()))
 				HandleJump();
 		}
+		
+		HandleMovement();
+	}
+	void _PhysicsProcessHurt(double delta)
+	{
+		HandleGravity(delta);
 	}
 	
 	void _PhysicsProcessClimb(double delta)
@@ -122,6 +142,8 @@ public partial class PlayerController : CharacterBody2D
 		}
 		
 		HandleClimb();
+		
+		HandleMovement();
 	}
 
 	private void HandleGravity(double delta)
