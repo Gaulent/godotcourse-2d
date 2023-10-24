@@ -9,7 +9,6 @@ public partial class PlayerController : CharacterBody2D
 	
 	[Export] private Timer _coyoteTimer;
 	[Export] private Area2D _areaDetector;
-	[Export] private Area2D _hurtArea;
 	
 	[Export] private float _speed = 250.0f;
 	[Export] private float _jumpVelocity = -550.0f;
@@ -18,11 +17,6 @@ public partial class PlayerController : CharacterBody2D
 	private float _climbDirection;
 	private bool _tryToJump;
 
-
-	public override void _Ready()
-	{
-		_hurtArea.BodyEntered += PerformAttack;
-	}
 
 	public override void _Process(double delta)
 	{
@@ -53,6 +47,32 @@ public partial class PlayerController : CharacterBody2D
 			_coyoteTimer.Start();
 
 		MoveAndSlide();
+
+		HandleEnemyCollisions();
+	}
+
+	private void HandleEnemyCollisions()
+	{	
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			KinematicCollision2D collision = GetSlideCollision(i);
+			Node target = (Node)collision.GetCollider();
+
+			if (target.IsInGroup("Enemy"))
+			{
+				if (collision.GetNormal() == Vector2.Up)
+				{
+					Vector2 velocity = Velocity;
+					velocity.Y = _jumpVelocity * 0.75f;
+					Velocity = velocity;
+					target.QueueFree();
+				}
+				else
+				{
+					GD.Print("Te han dao");
+				}
+			}
+		}
 	}
 
 	private void HandleMovement()
@@ -138,19 +158,11 @@ public partial class PlayerController : CharacterBody2D
 		Velocity = velocity;
 	}
 	
-	void PerformAttack(Node2D node)
-	{
-		Vector2 velocity = Velocity;
-		velocity.Y = _jumpVelocity;
-		Velocity = velocity;
-		node.QueueFree();
-	}
-	
 	public bool IsTouchingLadder()
 	{
 		foreach(Area2D area in _areaDetector.GetOverlappingAreas())
 		{
-			if (area.GetCollisionLayerValue(5))
+			if (area.GetCollisionLayerValue(5)) //Ladder
 				return true;
 		}
 		return false;

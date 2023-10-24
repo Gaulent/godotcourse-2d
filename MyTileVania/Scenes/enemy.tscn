@@ -56,7 +56,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
 size = Vector2(20, 16)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite") groups=["Enemy"]]
 position = Vector2(0, 15)
 collision_layer = 4
 collision_mask = 7
