@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public partial class PlayerController : CharacterBody2D
 {
-	public enum PlayerStatus {Normal, Climb, Hurt}
+	public enum PlayerStatus {Normal, Climb, Hurt, Jumping}
 	public PlayerStatus State = PlayerStatus.Normal;
 	
 	[Export] private Timer _coyoteTimer;
@@ -40,6 +40,9 @@ public partial class PlayerController : CharacterBody2D
 				break;
 			case PlayerStatus.Hurt:
 				_PhysicsProcessHurt(delta);
+				break;
+			case PlayerStatus.Jumping:
+				_PhysicsProcessJumping(delta);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -115,11 +118,40 @@ public partial class PlayerController : CharacterBody2D
 		{
 			_tryToJump = false;
 			if ((IsOnFloor() || !_coyoteTimer.IsStopped()))
+			{
 				HandleJump();
+				State = PlayerStatus.Jumping;
+			}
 		}
 		
 		HandleMovement();
 	}
+	
+	
+	void _PhysicsProcessJumping(double delta)
+	{
+		if (IsTouchingLadder() && _climbDirection != 0)
+		{
+			State = PlayerStatus.Climb;
+			return;
+		}
+
+		HandleGravity(delta);
+
+		if (Input.IsActionJustReleased("ui_accept"))
+		{
+			Vector2 velocity = Velocity;
+			velocity.Y = GetRealVelocity().Y * 0.5f;
+			Velocity = velocity;
+		}
+		
+		
+		if (GetRealVelocity().Y > 0)
+			State = PlayerStatus.Normal;
+		
+		HandleMovement();
+	}
+	
 	void _PhysicsProcessHurt(double delta)
 	{
 		HandleGravity(delta);
