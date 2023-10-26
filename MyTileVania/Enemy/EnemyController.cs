@@ -33,16 +33,16 @@ public partial class EnemyController : CharacterBody2D
 		MoveAndSlide();
 		
 		// Si no se hace despues del MoveAndSlide se puede quedar pillado en muros.
-		
-		if ((!rightFoot.IsColliding() && facingRight) ||
-		    (!leftFoot.IsColliding() && !facingRight) ||
-		    (leftHand.IsColliding() && !facingRight) ||
-		    (rightHand.IsColliding() && facingRight))
+		if (IsOnFloor())
 		{
-			facingRight = !facingRight;
-			sprite.FlipH = !facingRight;
-		}		
+			if ((!rightFoot.IsColliding() && facingRight) ||
+			    (!leftFoot.IsColliding() && !facingRight) ||
+			    (leftHand.IsColliding() && !facingRight) ||
+			    (rightHand.IsColliding() && facingRight))
+			{
+				facingRight = !facingRight;
+				sprite.FlipH = !facingRight;
+			}		
+		}
 	}
-
-
 }

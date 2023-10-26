@@ -78,7 +78,7 @@ public partial class PlayerController : CharacterBody2D
 	}
 
 	// TODO: Mejorar. Referencia a Sprite. Maquina de estados?
-	private async void GetHurt(Vector2 normal)
+	public async void GetHurt(Vector2 normal)
 	{
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.Red;
 		State = PlayerStatus.Hurt;
