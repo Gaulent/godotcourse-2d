@@ -1,7 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb4v822exhjpw"]
+[gd_scene load_steps=14 format=3 uid="uid://bb4v822exhjpw"]
 
 [ext_resource type="Script" path="res://Enemy/EnemyController.cs" id="1_mgpiy"]
 [ext_resource type="Texture2D" uid="uid://casvobmf8vq1h" path="res://Enemy/SPA_Enemy_Right.png" id="2_0ya5i"]
+[ext_resource type="Shader" path="res://Shaders/erosion/erosion.gdshader" id="2_jm3iv"]
+[ext_resource type="Texture2D" uid="uid://1h8pfeajp5h6" path="res://Shaders/erosion/erosion_tex.png" id="3_wsofn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
+size = Vector2(20, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj3pb"]
+shader = ExtResource("2_jm3iv")
+shader_parameter/albedo = Color(1, 0, 0, 1)
+shader_parameter/erosion_max_offset = 0.1
+shader_parameter/erosion = ExtResource("3_wsofn")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbr1e"]
 atlas = ExtResource("2_0ya5i")
@@ -53,9 +64,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
-size = Vector2(20, 16)
-
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite") groups=["Enemy"]]
 position = Vector2(0, 15)
 collision_layer = 4
@@ -66,13 +74,6 @@ rightFoot = NodePath("RightFoot")
 leftHand = NodePath("LeftHand")
 rightHand = NodePath("RightHand")
 sprite = NodePath("AnimatedSprite2D")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -16)
-sprite_frames = SubResource("SpriteFrames_kbx2t")
-animation = &"walking"
-autoplay = "walking"
-frame_progress = 0.42792
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -102,3 +103,11 @@ position = Vector2(-7, -9)
 target_position = Vector2(-8, 0)
 collision_mask = 6
 hit_from_inside = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_fj3pb")
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_kbx2t")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.42792

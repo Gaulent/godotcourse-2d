@@ -16,9 +16,6 @@ collision_mask = 7
 script = ExtResource("1_rltld")
 _area2D = NodePath("Area2D")
 
-[node name="TileVaniaMushroom" type="Sprite2D" parent="."]
-texture = ExtResource("1_id3na")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.73867e-06, 5)
 rotation = 1.5708
@@ -32,3 +29,6 @@ position = Vector2(0, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_s85ej")
 debug_color = Color(0.854902, 0.227451, 0.721569, 0.419608)
+
+[node name="TileVaniaMushroom" type="Sprite2D" parent="."]
+texture = ExtResource("1_id3na")
