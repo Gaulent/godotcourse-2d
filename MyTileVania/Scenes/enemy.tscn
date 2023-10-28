@@ -1,63 +1,68 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb4v822exhjpw"]
+[gd_scene load_steps=15 format=3 uid="uid://bb4v822exhjpw"]
 
 [ext_resource type="Script" path="res://Enemy/EnemyController.cs" id="1_mgpiy"]
-[ext_resource type="Texture2D" uid="uid://casvobmf8vq1h" path="res://Enemy/SPA_Enemy_Right.png" id="2_0ya5i"]
+[ext_resource type="Texture2D" uid="uid://ck8cosd4rnbr5" path="res://Enemy/SPA_Enemy_Right.png" id="2_0ya5i"]
 [ext_resource type="Shader" path="res://Shaders/erosion/erosion.gdshader" id="2_jm3iv"]
-[ext_resource type="Texture2D" uid="uid://1h8pfeajp5h6" path="res://Shaders/erosion/erosion_tex.png" id="3_wsofn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
 size = Vector2(20, 16)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y1m1x"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nuj52"]
+noise = SubResource("FastNoiseLite_y1m1x")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fj3pb"]
 shader = ExtResource("2_jm3iv")
-shader_parameter/albedo = Color(1, 0, 0, 1)
-shader_parameter/erosion_max_offset = 0.1
-shader_parameter/erosion = ExtResource("3_wsofn")
+shader_parameter/dissolve_value = 0.429
+shader_parameter/sheet_columns = 6
+shader_parameter/sheet_rows = 1
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_nuj52")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbr1e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kae27"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(10, 1, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uh2yv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub47j"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(48, 1, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5iv1v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c1e7"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(86, 1, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k25eg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ah83"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(124, 1, 32, 32)
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3trtn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77ix"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(162, 1, 32, 32)
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5x6k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8fi2"]
 atlas = ExtResource("2_0ya5i")
-region = Rect2(200, 1, 32, 32)
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbx2t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fbr1e")
+"texture": SubResource("AtlasTexture_kae27")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uh2yv")
+"texture": SubResource("AtlasTexture_ub47j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5iv1v")
+"texture": SubResource("AtlasTexture_6c1e7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k25eg")
+"texture": SubResource("AtlasTexture_8ah83")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3trtn")
+"texture": SubResource("AtlasTexture_n77ix")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p5x6k")
+"texture": SubResource("AtlasTexture_y8fi2")
 }],
 "loop": true,
 "name": &"walking",
@@ -110,4 +115,4 @@ position = Vector2(-1, -16)
 sprite_frames = SubResource("SpriteFrames_kbx2t")
 animation = &"walking"
 autoplay = "walking"
-frame_progress = 0.42792
+frame_progress = 0.242696

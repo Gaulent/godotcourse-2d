@@ -1,30 +1,37 @@
-shader_type canvas_item;
-render_mode blend_mix,unshaded;
+shader_type canvas_item; // Tipo de canvas para 2D
 
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler2D dissolve_texture : source_color; // Textura de ruido de entrada
+uniform float dissolve_value : hint_range(0,1);    // Valores en el tiempo
+uniform int sheet_columns = 1;
+uniform int sheet_rows = 1;
 
-uniform sampler2D erosion;
-uniform float erosion_max_offset = 0.1;
 
-void vertex() {
-	UV = UV;
+vec2 getNewUV(sampler2D currentTexture, vec2 current_uv){
+	vec2 sprite_sheet_size = vec2(textureSize(currentTexture,0));
+	vec2 frame_size;
+	frame_size.x = sprite_sheet_size.x/float(sheet_columns);
+	frame_size.y = sprite_sheet_size.y/float(sheet_rows);
+	vec2 current_point = sprite_sheet_size * current_uv;
+	float row = floor(current_point.y / frame_size.y);
+	float column = floor(current_point.x / frame_size.x);
+	vec2 max_point = (frame_size * vec2(column, row)) + frame_size;
+	vec2 new_uv = 1.0 - (max_point - current_point) / frame_size;
+	
+	return new_uv;
 }
 
 
-void fragment() {
-	vec2 base_uv = UV;
+void fragment(){    // Esto se ejecuta por cada pixel
+    vec4 main_texture = texture(TEXTURE, UV);           // Mi textura. UV es la posicion en el sprite.
+
+	vec2 new_uv=getNewUV(TEXTURE,UV);
+
+    float noise_texture = texture(dissolve_texture, new_uv).x; // Ruido .x es igual que .r
+
+	if(noise_texture<dissolve_value)
+		noise_texture = 0.0;
+	else
+		noise_texture = 1.0;
 	
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	albedo_tex *= COLOR;
-	//ALBEDO = albedo.rgb * albedo_tex.rgb;
-	//ALPHA *= albedo.a * albedo_tex.a;
-	
-	vec4 erosion_tex = texture(erosion, base_uv);
-	
-	float erosion_min = (sin(TIME * 2.0) + 1.0) * 0.5;
-	float erosion_max = erosion_min + erosion_max_offset;
-	float erosion_val = smoothstep(erosion_min, erosion_max, erosion_tex.r);
-	
-	COLOR *= erosion_val;
+    COLOR.a = main_texture.a * noise_texture;
 }
