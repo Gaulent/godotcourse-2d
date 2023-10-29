@@ -14,9 +14,9 @@ noise = SubResource("FastNoiseLite_y1m1x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fj3pb"]
 shader = ExtResource("2_jm3iv")
-shader_parameter/dissolve_value = 0.429
-shader_parameter/sheet_columns = 6
-shader_parameter/sheet_rows = 1
+shader_parameter/dissolve_value = 0.459
+shader_parameter/center = Vector2(16, 16)
+shader_parameter/size = Vector2(32, 32)
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_nuj52")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kae27"]
@@ -115,4 +115,4 @@ position = Vector2(-1, -16)
 sprite_frames = SubResource("SpriteFrames_kbx2t")
 animation = &"walking"
 autoplay = "walking"
-frame_progress = 0.242696
+frame_progress = 0.199643
