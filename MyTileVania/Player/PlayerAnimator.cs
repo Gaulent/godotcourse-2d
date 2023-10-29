@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class PlayerAnimator : AnimatedSprite2D
-{
+{/*
 	private PlayerController player;
 
 	
@@ -10,7 +10,6 @@ public partial class PlayerAnimator : AnimatedSprite2D
 	public override void _Ready()
 	{
 		player = GetParent<PlayerController>();
-
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +22,7 @@ public partial class PlayerAnimator : AnimatedSprite2D
 			_ => FlipH
 		};
 
-		if (player.State == PlayerController.PlayerStatus.Climb)
+		if (player.fsm.GetState().Name == "Climb")
 		{
 			Animation = "climbing";
 			return;
@@ -35,5 +34,5 @@ public partial class PlayerAnimator : AnimatedSprite2D
 		{
 			Animation = player.GetRealVelocity().Y > 0 ? "jump_down" : "jump_up";
 		}
-	}
+	}*/
 }

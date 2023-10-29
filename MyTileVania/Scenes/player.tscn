@@ -1,8 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://bg5wwqil77bt5"]
+[gd_scene load_steps=31 format=3 uid="uid://bg5wwqil77bt5"]
 
 [ext_resource type="Script" path="res://Player/PlayerController.cs" id="1_4irg2"]
 [ext_resource type="Texture2D" uid="uid://c42x6tf1yxmi1" path="res://Player/SPA_Player_Ginger.png" id="2_k0wi1"]
 [ext_resource type="Script" path="res://Player/PlayerAnimator.cs" id="3_l5uup"]
+[ext_resource type="Script" path="res://Managers/StateMachine.cs" id="4_x0jns"]
+[ext_resource type="Script" path="res://Player/States/PlayerClimb.cs" id="5_qsk56"]
+[ext_resource type="Script" path="res://Player/States/PlayerNormal.cs" id="6_x4i2v"]
+[ext_resource type="Script" path="res://Player/States/PlayerHurt.cs" id="7_d4ggn"]
+[ext_resource type="Script" path="res://Player/States/PlayerMove.cs" id="7_rxu48"]
+[ext_resource type="Script" path="res://Player/States/PlayerJumping.cs" id="8_w8w0p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o73co"]
 atlas = ExtResource("2_k0wi1")
@@ -164,11 +170,12 @@ size = Vector2(14, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awo05"]
 size = Vector2(12, 13)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_coyoteTimer", "_areaDetector")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_coyoteTimer", "_areaDetector", "fsm")]
 collision_mask = 7
 script = ExtResource("1_4irg2")
 _coyoteTimer = NodePath("CoyoteTime")
 _areaDetector = NodePath("Area2DDetector")
+fsm = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5lu5u")
@@ -200,3 +207,22 @@ collision_mask = 16
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_awo05")
 debug_color = Color(0.941176, 0.0980392, 0.560784, 0.419608)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_x0jns")
+initialState = NodePath("Move/Normal")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("7_rxu48")
+
+[node name="Normal" type="Node" parent="StateMachine/Move"]
+script = ExtResource("6_x4i2v")
+
+[node name="Jumping" type="Node" parent="StateMachine/Move"]
+script = ExtResource("8_w8w0p")
+
+[node name="Climb" type="Node" parent="StateMachine/Move"]
+script = ExtResource("5_qsk56")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("7_d4ggn")

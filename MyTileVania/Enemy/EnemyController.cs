@@ -16,6 +16,7 @@ public partial class EnemyController : CharacterBody2D
 	private bool facingRight = true;
 	[Export] private AnimatedSprite2D sprite;
 	[Export] private AnimationPlayer animator;
+	private bool isDyeing = false;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -50,6 +51,9 @@ public partial class EnemyController : CharacterBody2D
 
 	public void Die()
 	{
+		if (isDyeing) return;
+
+		isDyeing = true;
 		animator.CurrentAnimation = "Enemy_Death";
 		CollisionLayer = 0; // Desactivar el layer
 		animator.AnimationFinished += _ => QueueFree();
