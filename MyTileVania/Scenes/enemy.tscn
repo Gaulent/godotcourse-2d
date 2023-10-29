@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb4v822exhjpw"]
+[gd_scene load_steps=18 format=3 uid="uid://bb4v822exhjpw"]
 
 [ext_resource type="Script" path="res://Enemy/EnemyController.cs" id="1_mgpiy"]
 [ext_resource type="Texture2D" uid="uid://ck8cosd4rnbr5" path="res://Enemy/SPA_Enemy_Right.png" id="2_0ya5i"]
@@ -7,17 +7,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
 size = Vector2(20, 16)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_y1m1x"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xd2lb"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nuj52"]
-noise = SubResource("FastNoiseLite_y1m1x")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bh658"]
+noise = SubResource("FastNoiseLite_xd2lb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj3pb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tgnc"]
+resource_local_to_scene = true
 shader = ExtResource("2_jm3iv")
-shader_parameter/dissolve_value = 0.393
+shader_parameter/dissolve_value = 0.0
 shader_parameter/size = Vector2(32, 32)
-shader_parameter/dissolve_color = Color(2.00392, 0, 0, 1)
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_nuj52")
+shader_parameter/dissolve_color = Color(1, 0, 0, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bh658")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kae27"]
 atlas = ExtResource("2_0ya5i")
@@ -69,7 +70,44 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite") groups=["Enemy"]]
+[sub_resource type="Animation" id="Animation_w801e"]
+resource_name = "Enemy_Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rbq5k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8h0s"]
+_data = {
+"Enemy_Death": SubResource("Animation_w801e"),
+"RESET": SubResource("Animation_rbq5k")
+}
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "sprite", "animator") groups=["Enemy"]]
 position = Vector2(0, 15)
 collision_layer = 4
 collision_mask = 7
@@ -79,6 +117,7 @@ rightFoot = NodePath("RightFoot")
 leftHand = NodePath("LeftHand")
 rightHand = NodePath("RightHand")
 sprite = NodePath("AnimatedSprite2D")
+animator = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -110,10 +149,15 @@ collision_mask = 6
 hit_from_inside = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_fj3pb")
+material = SubResource("ShaderMaterial_6tgnc")
 position = Vector2(-16, -32)
 sprite_frames = SubResource("SpriteFrames_kbx2t")
 animation = &"walking"
 autoplay = "walking"
-frame_progress = 0.935771
+frame_progress = 0.0960461
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w8h0s")
+}

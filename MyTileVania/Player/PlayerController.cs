@@ -63,14 +63,15 @@ public partial class PlayerController : CharacterBody2D
 			KinematicCollision2D collision = GetSlideCollision(i);
 			Node target = (Node)collision.GetCollider();
 
-			if (target.IsInGroup("Enemy"))
+			if (target is EnemyController)
 			{
+				EnemyController enemy = (EnemyController)target;
 				if (collision.GetNormal() == Vector2.Up)
 				{
 					Vector2 velocity = Velocity;
 					velocity.Y = _jumpVelocity * 0.75f;
 					Velocity = velocity;
-					target.QueueFree();
+					enemy.Die();
 				}
 				else
 				{

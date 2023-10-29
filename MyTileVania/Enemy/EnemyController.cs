@@ -15,6 +15,7 @@ public partial class EnemyController : CharacterBody2D
 	[Export] private RayCast2D rightHand;
 	private bool facingRight = true;
 	[Export] private AnimatedSprite2D sprite;
+	[Export] private AnimationPlayer animator;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -44,5 +45,13 @@ public partial class EnemyController : CharacterBody2D
 				sprite.FlipH = !facingRight;
 			}		
 		}
+	}
+
+
+	public void Die()
+	{
+		animator.CurrentAnimation = "Enemy_Death";
+		CollisionLayer = 0; // Desactivar el layer
+		animator.AnimationFinished += _ => QueueFree();
 	}
 }
