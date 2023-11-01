@@ -1,18 +1,30 @@
 using Godot;
 using System;
+using Godot.Collections;
+using System.Threading.Tasks;
 
 public partial class PlayerHurt : State
 {
-	private PlayerController _player;
+	[Export] private PlayerController _player;
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	// Al entrar, rojo y repele
+	public override void Enter(Dictionary payload = null)
 	{
-		_player = (PlayerController)Owner;
+		_player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.Red;
+		GetHurt((Vector2)payload!["normal"]);
 	}
 	
-	public override void PhysicsUpdate(float delta)
+	// Repele y vuelve al tiempo a Normal
+	public async void GetHurt(Vector2 normal)
 	{
-		_player.HandleGravity(delta);
+		_player.Velocity = new Vector2(normal.X * _player._speed, _player._jumpVelocity) * 0.5f;
+		await Task.Delay(TimeSpan.FromMilliseconds(300));
+		fsm.TransitionTo("Move/Normal");
+	} 
+
+	// Al terminar vuelve a blanco
+	public override void Exit()
+	{
+		_player.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.White;
 	}
 }

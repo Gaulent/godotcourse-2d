@@ -15,7 +15,6 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_rltld")
 _area2D = NodePath("Area2D")
-_rejectForce = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.73867e-06, 5)

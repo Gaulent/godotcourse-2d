@@ -3,27 +3,22 @@ using System;
 
 public partial class PlayerMove : State
 {
-	private PlayerController _player;
+	[Export] private PlayerController _player;
+	[Export] private AnimatedSprite2D sprite;
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		GD.Print("Ready");
-		_player = (PlayerController)Owner;
-	}
-
-
-	public override void PhysicsUpdate(float delta)
-	{
-		HandleMovement();
-
-		_player.MoveAndSlide();
-	}
-	
-	public void HandleMovement()
+	public override void PhysicsUpdate(double delta)
 	{
 		var Direction = Input.GetAxis("ui_left", "ui_right");
 		
+		// Cambia la direccion del sprite
+		sprite.FlipH = Direction switch
+		{
+			< 0 => true,
+			> 0 => false,
+			_ => sprite.FlipH
+		};
+		
+		// Permite moverse al personaje
 		Vector2 velocity = _player.Velocity;
 		
 		if (Direction != 0f)
@@ -31,6 +26,6 @@ public partial class PlayerMove : State
 		else
 			velocity.X = Mathf.MoveToward(_player.Velocity.X, 0, _player._speed);
 		
-		_player.Velocity = velocity;		
+		_player.Velocity = velocity;	
 	}
 }

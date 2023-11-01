@@ -1,37 +1,47 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 public partial class PlayerClimb : State
 {
-	private PlayerController _player;
+	[Export] private PlayerController _player;
+	[Export] private AnimatedSprite2D sprite;
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	// Al entrar anula la gravedad
+	public override void Enter(Dictionary payload = null)
 	{
-		_player = (PlayerController)Owner;
+		_player.GravityMultiplier = 0;
+		sprite.Animation = "climbing";
 	}
 
-	public override void PhysicsUpdate(float delta)
+	// Al salir se restablece
+	public override void Exit()
 	{
+		_player.GravityMultiplier = 1;
+	}
 
-		
+	public override void PhysicsUpdate(double delta)
+	{
+		// Si no toca escalera, vuelve a normal
 		if (!_player.IsTouchingLadder())
 		{
-			_player.fsm.TransitionTo("Move/Normal");
+			fsm.TransitionTo("Move/Normal");
 			return;
 		}
 
+		// Si quiere saltar, salta
 		if (Input.IsActionJustPressed("ui_accept"))
 		{
-			//_player.HandleJump();
-			_player.fsm.TransitionTo("Move/Normal");
+			fsm.TransitionTo("Move/Jumping");
 			return;
 		}
 		
+		// Movimiento de escalada
 		HandleClimb();
+		
+		// Ejecuta el estado 'Move'
 		GetParent<State>().PhysicsUpdate(delta);
 	}
-	
 	
 	public void HandleClimb()
 	{

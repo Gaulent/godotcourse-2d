@@ -1,40 +1,43 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 public partial class PlayerJumping : State
 {
-	private PlayerController _player;
+	[Export] private PlayerController _player;
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	// Al entrar, salta
+	public override void Enter(Dictionary payload = null)
 	{
-		_player = (PlayerController)Owner;
+		Vector2 velocity = _player.Velocity;
+		velocity.Y = _player._jumpVelocity;
+		_player.Velocity = velocity;
 	}
-	
-	public override void PhysicsUpdate(float delta)
+
+	public override void PhysicsUpdate(double delta)
 	{
-		var _climbDirection = Input.GetAxis("ui_up", "ui_down");
-		
+		float _climbDirection = Input.GetAxis("ui_up", "ui_down");
+
+		// Si quiere escalar, escala
 		if (_player.IsTouchingLadder() && _climbDirection != 0)
 		{
-			_player.fsm.TransitionTo("Move/Climb");
+			fsm.TransitionTo("Move/Climb");
 			return;
 		}
 
-		_player.HandleGravity(delta);
-
+		// Si se libera el boton, baja
 		if (Input.IsActionJustReleased("ui_accept"))
 		{
-			GD.Print("True");
 			Vector2 velocity = _player.Velocity;
 			velocity.Y = _player.GetRealVelocity().Y * 0.5f;
 			_player.Velocity = velocity;
 		}
 		
-		
+		// Si esta callendo, vuelve a normal
 		if (_player.GetRealVelocity().Y > 0)
-			_player.fsm.TransitionTo("Move/Normal");
+			fsm.TransitionTo("Move/Normal");
 		
+		// Ejecuta el estado 'Move'
 		GetParent<State>().PhysicsUpdate(delta);
 	}
 }

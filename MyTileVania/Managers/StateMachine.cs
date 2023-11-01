@@ -1,6 +1,7 @@
 using Godot;
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using Godot.Collections;
 
 public partial class StateMachine : Node
 {
@@ -8,46 +9,49 @@ public partial class StateMachine : Node
     
     private State _currentState;
 
-    public State GetState() => _currentState;
-    
     public override void _Ready()
     {
-        foreach (Node node in GetChildren()) {
-            if (node is State s) {
-                s.fsm = this;
-                s.Exit(); // reset
+        // Adelanto la ejecucion del State Machine.
+        ProcessPhysicsPriority = -1; 
+        
+        foreach (State s in GetChildrenStates(this)) {
+            s.fsm = this;
+            s.Exit(); // reset
+        }
+
+        _currentState = GetNode<State>(initialState);
+        _currentState.Enter();
+    }
+
+    private Array<State> GetChildrenStates(Node node)
+    {
+        Array<State> states = new Array<State>();
+        
+        foreach (Node child in node.GetChildren())
+        {
+            if (child is State s)
+            {
+                states.Add(s);
+                states.AddRange(GetChildrenStates(s));
             }
         }
 
-        GD.Print(initialState);
-        _currentState = GetNode<State>(initialState);
-        GD.Print(_currentState.Name);
-        _currentState.Enter();
+        return states;
     }
 
     public override void _Process(double delta)
     {
-        _currentState.Update((float)delta);
+        _currentState.Update(delta);
     }
     
     public override void _PhysicsProcess(double delta)
     {
-        _currentState.PhysicsUpdate((float)delta);
+        _currentState.PhysicsUpdate(delta);
     }
     
-    /*
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        _currentState.HandleInput(@event);
-        @event.Dispose();
-    }*/
-    
-    public void TransitionTo(string key) {
-        GD.Print(_currentState.Name);
+    public void TransitionTo(string key, Dictionary payload = null) {
         _currentState.Exit();
-        GD.Print(key);
         _currentState = GetNode<State>(key);
-        GD.Print(_currentState.Name);
-        _currentState.Enter();
+        _currentState.Enter(payload);
     }
 }

@@ -1,30 +1,32 @@
 using Godot;
 using System;
-using System.Text;
-using System.Threading.Tasks;
+using Godot.Collections;
 
 public partial class PlayerController : CharacterBody2D
 {
-	[Export] public Timer _coyoteTimer;
 	[Export] public Area2D _areaDetector;
 	
 	[Export] public float _speed = 250.0f;
 	[Export] public float _jumpVelocity = -550.0f;
-	[Export] public StateMachine fsm;
-	public float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 2f;
-	public float Direction { get; private set; }
+	[Export] private StateMachine fsm;
 
+	public float GravityMultiplier { get; set; }
 
+	public float GetGravity()
+	{
+		return ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle() * 2f * GravityMultiplier;
+	}
+	
 	public override void _Ready()
 	{
+		GravityMultiplier = 1f;
 		fsm = GetNode<StateMachine>("StateMachine");
 	}
 
 	public override void _PhysicsProcess(double delta)
-	{/*
-		if (IsOnFloor())
-			_coyoteTimer.Start();*/
-
+	{
+		HandleGravity(delta);
+		
 		MoveAndSlide();
 
 		HandleEnemyCollisions();
@@ -46,7 +48,6 @@ public partial class PlayerController : CharacterBody2D
 					velocity.Y = _jumpVelocity * 0.75f;
 					Velocity = velocity;
 					enemy.Die();
-					GD.Print("MUERTE");
 				}
 				else
 				{
@@ -56,16 +57,10 @@ public partial class PlayerController : CharacterBody2D
 		}
 	}
 
-	// TODO: Mejorar. Referencia a Sprite. Maquina de estados?
-	public async void GetHurt(Vector2 normal)
+	public void GetHurt(Vector2 normal)
 	{
-		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.Red;
-		fsm.TransitionTo("Hurt");
-		Velocity = new Vector2(normal.X * _speed, _jumpVelocity) * 0.5f;
-		
-		await Task.Delay(TimeSpan.FromMilliseconds(300));
-		fsm.TransitionTo("Move/Normal");
-		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Modulate = Colors.White;
+		var payload = new Dictionary{{"normal", normal}};
+		fsm.TransitionTo("Hurt", payload);
 	} 
 	
 	public void HandleGravity(double delta)
@@ -75,10 +70,9 @@ public partial class PlayerController : CharacterBody2D
 		if (!IsOnFloor())
 		{
 			if (GetRealVelocity().Y > 0)
-				velocity.Y += _gravity * (float)delta * 1.5f;
+				velocity.Y += GetGravity() * (float)delta * 1.5f;
 			else
-				velocity.Y += _gravity * (float)delta;				
-			
+				velocity.Y += GetGravity() * (float)delta;				
 		}
 		Velocity = velocity;
 	}
