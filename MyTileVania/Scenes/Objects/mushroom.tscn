@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://vo0fcly724j3"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Mushroom.cs" id="1_iaihm"]
+[ext_resource type="Texture2D" uid="uid://ctsh735xaimcq" path="res://Assets/Objects/TileVania Mushroom.png" id="2_81b34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1g8h"]
+size = Vector2(22, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s85ej"]
+radius = 8.0
+height = 26.0
+
+[node name="Mushroom" type="StaticBody2D" node_paths=PackedStringArray("_area2D")]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_iaihm")
+_area2D = NodePath("Area2D")
+_rejectForce = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.73867e-06, 5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_d1g8h")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s85ej")
+debug_color = Color(0.854902, 0.227451, 0.721569, 0.419608)
+
+[node name="TileVaniaMushroom" type="Sprite2D" parent="."]
+texture = ExtResource("2_81b34")

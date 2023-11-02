@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c30anemowes65"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/EndOfLevel.cs" id="1_sht8o"]
+[ext_resource type="Texture2D" uid="uid://bgrjwo5gf02tw" path="res://Assets/Objects/Exit Pixelated.png" id="2_pm1lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qto3"]
+size = Vector2(64, 64)
+
+[node name="EndOfLevel" type="Area2D"]
+script = ExtResource("1_sht8o")
+
+[node name="ExitPixelated" type="Sprite2D" parent="."]
+texture = ExtResource("2_pm1lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8qto3")

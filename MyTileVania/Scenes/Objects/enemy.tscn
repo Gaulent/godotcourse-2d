@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3 uid="uid://bb4v822exhjpw"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/EnemyController.cs" id="1_c48w1"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/erosion.gdshader" id="2_6j38q"]
+[ext_resource type="Texture2D" uid="uid://ck8cosd4rnbr5" path="res://Assets/Enemy/SPA_Enemy_Right.png" id="3_otm7r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xd2lb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bh658"]
+noise = SubResource("FastNoiseLite_xd2lb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tgnc"]
+resource_local_to_scene = true
+shader = ExtResource("2_6j38q")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/size = Vector2(32, 32)
+shader_parameter/dissolve_color = Color(1, 0, 0, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_bh658")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kae27"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub47j"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c1e7"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ah83"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77ix"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8fi2"]
+atlas = ExtResource("3_otm7r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbx2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kae27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub47j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c1e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ah83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n77ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8fi2")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jpw"]
+size = Vector2(20, 16)
+
+[sub_resource type="Animation" id="Animation_w801e"]
+resource_name = "Enemy_Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rbq5k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8h0s"]
+_data = {
+"Enemy_Death": SubResource("Animation_w801e"),
+"RESET": SubResource("Animation_rbq5k")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y15h3"]
+size = Vector2(15, 22)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("leftFoot", "rightFoot", "leftHand", "rightHand", "hurtBox", "sprite", "animator") groups=["Enemy"]]
+position = Vector2(0, 15)
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_c48w1")
+leftFoot = NodePath("LeftFoot")
+rightFoot = NodePath("RightFoot")
+leftHand = NodePath("LeftHand")
+rightHand = NodePath("RightHand")
+hurtBox = NodePath("Hurtbox")
+sprite = NodePath("AnimatedSprite2D")
+animator = NodePath("AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6tgnc")
+position = Vector2(-16, -32)
+sprite_frames = SubResource("SpriteFrames_kbx2t")
+animation = &"walking"
+autoplay = "walking"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_h4jpw")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="LeftFoot" type="RayCast2D" parent="."]
+position = Vector2(-7, -5)
+target_position = Vector2(0, 17)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightFoot" type="RayCast2D" parent="."]
+position = Vector2(7, -5)
+target_position = Vector2(0, 17)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightHand" type="RayCast2D" parent="."]
+position = Vector2(7, -9)
+target_position = Vector2(8, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="LeftHand" type="RayCast2D" parent="."]
+position = Vector2(-7, -9)
+target_position = Vector2(-8, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w8h0s")
+}
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.62921e-07, -7.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_y15h3")
+debug_color = Color(0.752941, 0, 0.0823529, 0.419608)

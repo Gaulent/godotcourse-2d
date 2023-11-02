@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ogl4g87enej"]
+
+[ext_resource type="PackedScene" uid="uid://bb4v822exhjpw" path="res://Scenes/Objects/enemy.tscn" id="1_ikjhu"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/erosion.gdshader" id="2_i87h1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ghowx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nx5pk"]
+noise = SubResource("FastNoiseLite_ghowx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cq0k0"]
+resource_local_to_scene = true
+shader = ExtResource("2_i87h1")
+shader_parameter/dissolve_value = 0.0
+shader_parameter/size = Vector2(32, 32)
+shader_parameter/dissolve_color = Color(1, 0, 0, 1)
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_nx5pk")
+
+[node name="Enemy" instance=ExtResource("1_ikjhu")]
+modulate = Color(0.396078, 0.054902, 0.792157, 1)
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_cq0k0")
