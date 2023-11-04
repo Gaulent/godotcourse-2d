@@ -68,9 +68,18 @@ public partial class EnemyController : CharacterBody2D
 		if (isDyeing) return;
 
 		isDyeing = true;
-		animator.CurrentAnimation = "Enemy_Death";
+		//animator.CurrentAnimation = "Enemy_Death";
 		CollisionLayer = 0; // Desactivar el layer
 		hurtBox.CollisionMask = 0;
+		
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(sprite.Material, "shader_parameter/dissolve_value", 1, 1f);
+		tween.Parallel().TweenProperty(this, "scale:y",0f, 0.5f).SetTrans(Tween.TransitionType.Sine);
+
+
+		//tween.TweenProperty(GetNode("Sprite"), "scale", Vector2.Zero, 1.0f).SetTrans(Tween.TransitionType.Bounce);
+		//tween.TweenCallback(Callable.From(GetNode("Sprite").QueueFree));
+		
 		animator.AnimationFinished += _ => QueueFree();
 	}
 }
