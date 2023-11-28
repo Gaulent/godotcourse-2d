@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3er5yte230j5"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_xbnxu"]
+[ext_resource type="Texture2D" uid="uid://c46n7p18a1avv" path="res://Sprites/enemyBlack1.png" id="2_jxbh3"]
+[ext_resource type="Script" path="res://EnemyGuns.cs" id="3_nl5vh"]
+[ext_resource type="PackedScene" uid="uid://breu804mu0sjl" path="res://Scenes/enemy_laser.tscn" id="4_7o22j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioibv"]
+radius = 44.0
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_xbnxu")
+
+[node name="EnemyBlack1" type="Sprite2D" parent="."]
+texture = ExtResource("2_jxbh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ioibv")
+
+[node name="Guns" type="Node2D" parent="." node_paths=PackedStringArray("_recoil")]
+position = Vector2(0, 35)
+script = ExtResource("3_nl5vh")
+_recoil = NodePath("Recoil")
+_bullet = ExtResource("4_7o22j")
+
+[node name="Recoil" type="Timer" parent="Guns"]
+one_shot = true

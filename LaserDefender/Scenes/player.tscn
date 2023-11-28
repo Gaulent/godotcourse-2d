@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://5abincdsnird"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_76ujw"]
+[ext_resource type="Texture2D" uid="uid://b1cfydcqp1fud" path="res://Sprites/playerShip1_blue.png" id="2_eyd08"]
+[ext_resource type="Script" path="res://Scripts/PlayerGuns.cs" id="3_ahgr1"]
+[ext_resource type="PackedScene" uid="uid://dt2sgimd5nahp" path="res://Scenes/player_laser.tscn" id="4_rn5sj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fosmc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ord7k"]
+radius = 25.1794
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox") groups=["Player"]]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_76ujw")
+hurtbox = NodePath("Hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_fosmc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_eyd08")
+
+[node name="Guns" type="Node2D" parent="." node_paths=PackedStringArray("_recoil")]
+position = Vector2(0, -29)
+script = ExtResource("3_ahgr1")
+_recoil = NodePath("Recoil")
+_bullet = ExtResource("4_rn5sj")
+
+[node name="Recoil" type="Timer" parent="Guns"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_ord7k")
+debug_color = Color(0.996078, 0, 0.196078, 0.419608)

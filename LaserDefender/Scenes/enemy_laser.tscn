@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://breu804mu0sjl"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyLaser.cs" id="1_5oa2b"]
+[ext_resource type="Texture2D" uid="uid://cnaoa10wgevkq" path="res://Sprites/laserRed08.png" id="2_raady"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kphwy"]
+radius = 15.2971
+
+[node name="EnemyLaser" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_5oa2b")
+
+[node name="LaserRed08" type="Sprite2D" parent="."]
+texture = ExtResource("2_raady")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kphwy")

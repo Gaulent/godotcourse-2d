@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://duq7jtwm0vrck"]
+
+[ext_resource type="Script" path="res://Scripts/ScrollBackground.cs" id="1_76wh2"]
+[ext_resource type="Texture2D" uid="uid://k1cwnel6cp3f" path="res://Sprites/stars_0.png" id="2_ok1ii"]
+[ext_resource type="Texture2D" uid="uid://4doscak08wtn" path="res://Sprites/stars_1.png" id="3_xorfh"]
+[ext_resource type="Script" path="res://Scripts/Shredder.cs" id="4_cpmvk"]
+[ext_resource type="PackedScene" uid="uid://5abincdsnird" path="res://Scenes/player.tscn" id="5_n333g"]
+[ext_resource type="PackedScene" uid="uid://c3er5yte230j5" path="res://Scenes/enemy.tscn" id="6_5axuf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_refq7"]
+size = Vector2(100, 1150.79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm40w"]
+size = Vector2(700, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dae3y"]
+size = Vector2(235, 2188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3357"]
+size = Vector2(1012, 134)
+
+[node name="Nivel" type="Node2D"]
+position = Vector2(327, 565)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(-250, 0)
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, -250, 0)
+script = ExtResource("1_76wh2")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 2048)
+
+[node name="Stars0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_ok1ii")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(5, 5)
+motion_mirroring = Vector2(0, 2048)
+
+[node name="Stars0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_xorfh")
+centered = false
+
+[node name="Limits" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Limits"]
+position = Vector2(27, 565)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/StaticBody2D"]
+position = Vector2(-26, 14)
+shape = SubResource("RectangleShape2D_refq7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Limits"]
+position = Vector2(627, 565)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/StaticBody2D2"]
+position = Vector2(24, 2)
+shape = SubResource("RectangleShape2D_refq7")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Limits"]
+position = Vector2(327, 1100)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/StaticBody2D3"]
+position = Vector2(7, 57)
+shape = SubResource("RectangleShape2D_cm40w")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Limits"]
+position = Vector2(327, 35)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/StaticBody2D4"]
+position = Vector2(-5, -36)
+shape = SubResource("RectangleShape2D_cm40w")
+
+[node name="Shredder4" type="Area2D" parent="Limits"]
+position = Vector2(910, 547)
+collision_layer = 0
+collision_mask = 65535
+script = ExtResource("4_cpmvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder4"]
+position = Vector2(0, -151)
+shape = SubResource("RectangleShape2D_dae3y")
+debug_color = Color(0.980392, 0, 0, 0.419608)
+
+[node name="Shredder3" type="Area2D" parent="Limits"]
+position = Vector2(-265, 546)
+collision_layer = 0
+collision_mask = 65535
+script = ExtResource("4_cpmvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder3"]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_dae3y")
+debug_color = Color(0.980392, 0, 0, 0.419608)
+
+[node name="Shredder2" type="Area2D" parent="Limits"]
+position = Vector2(312, 1360)
+collision_layer = 0
+collision_mask = 65535
+script = ExtResource("4_cpmvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder2"]
+shape = SubResource("RectangleShape2D_n3357")
+debug_color = Color(0.980392, 0, 0, 0.419608)
+
+[node name="Shredder" type="Area2D" parent="Limits"]
+position = Vector2(331, -282)
+collision_layer = 0
+collision_mask = 65535
+script = ExtResource("4_cpmvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder"]
+position = Vector2(0, -392)
+shape = SubResource("RectangleShape2D_n3357")
+debug_color = Color(0.980392, 0, 0, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("5_n333g")]
+position = Vector2(0, 300)
+
+[node name="Enemy" parent="." instance=ExtResource("6_5axuf")]
+position = Vector2(-223, -833)
