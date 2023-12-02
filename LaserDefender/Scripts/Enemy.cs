@@ -8,8 +8,9 @@ public partial class Enemy : Area2D
 		AreaEntered += OnContact;
 		
 		Tween tween = CreateTween().SetLoops();
-		tween.TweenProperty(this, "position:x", 200, 1f).SetTrans(Tween.TransitionType.Sine);
-		tween.TweenProperty(this, "position:x", 0, 1f).SetTrans(Tween.TransitionType.Sine);
+
+		tween.TweenProperty(this, "position:x", 300, 1f).SetTrans(Tween.TransitionType.Sine).AsRelative();
+		tween.TweenProperty(this, "position:x", -300, 1f).SetTrans(Tween.TransitionType.Sine).AsRelative();
 	}
 
 	public override void _PhysicsProcess(double delta)

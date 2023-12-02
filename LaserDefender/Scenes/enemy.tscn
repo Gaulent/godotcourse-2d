@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_xbnxu"]
 [ext_resource type="Texture2D" uid="uid://c46n7p18a1avv" path="res://Sprites/enemyBlack1.png" id="2_jxbh3"]
-[ext_resource type="Script" path="res://EnemyGuns.cs" id="3_nl5vh"]
+[ext_resource type="Script" path="res://Scripts/EnemyGuns.cs" id="3_nl5vh"]
 [ext_resource type="PackedScene" uid="uid://breu804mu0sjl" path="res://Scenes/enemy_laser.tscn" id="4_7o22j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ioibv"]
