@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://k5qlyxudq82w"]
+
+[ext_resource type="PackedScene" uid="uid://bbm3cbmrxywu" path="res://Scenes/enemy_default.tscn" id="1_ebox6"]
+[ext_resource type="Script" path="res://Scripts/EnemyFrontMovement.cs" id="2_bhdyp"]
+[ext_resource type="Texture2D" uid="uid://b3bubahv6741n" path="res://Sprites/enemyRed5.png" id="2_yxwvo"]
+
+[node name="Enemy" instance=ExtResource("1_ebox6")]
+
+[node name="Movement" parent="." index="0"]
+script = ExtResource("2_bhdyp")
+
+[node name="EnemyBlack1" parent="." index="2"]
+texture = ExtResource("2_yxwvo")
+
+[node name="Guns" parent="." index="3"]
+_shootMode = 0
+speed = 600.0

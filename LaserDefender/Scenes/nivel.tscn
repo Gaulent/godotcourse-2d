@@ -1,11 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://duq7jtwm0vrck"]
+[gd_scene load_steps=18 format=3 uid="uid://duq7jtwm0vrck"]
 
+[ext_resource type="Script" path="res://Scenes/GameManager.cs" id="1_02g73"]
 [ext_resource type="Script" path="res://Scripts/ScrollBackground.cs" id="1_76wh2"]
+[ext_resource type="FontFile" uid="uid://cnm0lysfrq0m7" path="res://SABADOO_.TTF" id="2_011v5"]
 [ext_resource type="Texture2D" uid="uid://k1cwnel6cp3f" path="res://Sprites/stars_0.png" id="2_ok1ii"]
+[ext_resource type="Script" path="res://Scenes/PointsLabel.cs" id="3_27tan"]
 [ext_resource type="Texture2D" uid="uid://4doscak08wtn" path="res://Sprites/stars_1.png" id="3_xorfh"]
 [ext_resource type="Script" path="res://Scripts/Shredder.cs" id="4_cpmvk"]
+[ext_resource type="Script" path="res://Scenes/ScriptedSpawner.cs" id="5_0uthm"]
 [ext_resource type="PackedScene" uid="uid://5abincdsnird" path="res://Scenes/player.tscn" id="5_n333g"]
-[ext_resource type="PackedScene" uid="uid://c3er5yte230j5" path="res://Scenes/enemy.tscn" id="6_5axuf"]
+[ext_resource type="PackedScene" uid="uid://k5qlyxudq82w" path="res://Scenes/enemy_front.tscn" id="7_7cr8b"]
+[ext_resource type="PackedScene" uid="uid://bbm3cbmrxywu" path="res://Scenes/enemy_default.tscn" id="11_1jjqg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2o0h"]
+font = ExtResource("2_011v5")
+font_size = 56
+font_color = Color(0.842533, 0.160634, 0.374717, 1)
+
+[sub_resource type="Environment" id="Environment_1p6rl"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_refq7"]
 size = Vector2(100, 1150.79)
@@ -21,6 +36,31 @@ size = Vector2(1012, 134)
 
 [node name="Nivel" type="Node2D"]
 position = Vector2(327, 565)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_02g73")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 37.0
+offset_right = 217.0
+offset_bottom = 98.0
+label_settings = SubResource("LabelSettings_v2o0h")
+script = ExtResource("3_27tan")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1p6rl")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(-250, 0)
@@ -40,6 +80,7 @@ motion_scale = Vector2(5, 5)
 motion_mirroring = Vector2(0, 2048)
 
 [node name="Stars0" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+self_modulate = Color(1, 1, 1, 0.207843)
 texture = ExtResource("3_xorfh")
 centered = false
 
@@ -90,7 +131,7 @@ script = ExtResource("4_cpmvk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder4"]
 position = Vector2(0, -151)
 shape = SubResource("RectangleShape2D_dae3y")
-debug_color = Color(0.980392, 0, 0, 0.419608)
+debug_color = Color(0.780392, 0, 0, 0.133333)
 
 [node name="Shredder3" type="Area2D" parent="Limits"]
 position = Vector2(-265, 546)
@@ -101,7 +142,7 @@ script = ExtResource("4_cpmvk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder3"]
 position = Vector2(0, -75)
 shape = SubResource("RectangleShape2D_dae3y")
-debug_color = Color(0.980392, 0, 0, 0.419608)
+debug_color = Color(0.780392, 0, 0, 0.133333)
 
 [node name="Shredder2" type="Area2D" parent="Limits"]
 position = Vector2(312, 1360)
@@ -111,7 +152,7 @@ script = ExtResource("4_cpmvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder2"]
 shape = SubResource("RectangleShape2D_n3357")
-debug_color = Color(0.980392, 0, 0, 0.419608)
+debug_color = Color(0.780392, 0, 0, 0.133333)
 
 [node name="Shredder" type="Area2D" parent="Limits"]
 position = Vector2(331, -282)
@@ -122,10 +163,23 @@ script = ExtResource("4_cpmvk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Shredder"]
 position = Vector2(0, -392)
 shape = SubResource("RectangleShape2D_n3357")
-debug_color = Color(0.980392, 0, 0, 0.419608)
+debug_color = Color(0.780392, 0, 0, 0.133333)
+
+[node name="ScriptedSpawner" type="Node" parent="."]
+script = ExtResource("5_0uthm")
+enemies = Array[PackedScene]([ExtResource("11_1jjqg"), ExtResource("7_7cr8b")])
+
+[node name="Position 0" type="Node2D" parent="ScriptedSpawner"]
+position = Vector2(120, -79)
+
+[node name="Position 1" type="Node2D" parent="ScriptedSpawner"]
+position = Vector2(263, -79)
+
+[node name="Position 2" type="Node2D" parent="ScriptedSpawner"]
+position = Vector2(407, -79)
+
+[node name="Position 3" type="Node2D" parent="ScriptedSpawner"]
+position = Vector2(550, -79)
 
 [node name="Player" parent="." instance=ExtResource("5_n333g")]
 position = Vector2(0, 300)
-
-[node name="Enemy" parent="." instance=ExtResource("6_5axuf")]
-position = Vector2(-223, -833)

@@ -15,5 +15,6 @@ script = ExtResource("1_nthmq")
 shape = SubResource("RectangleShape2D_efkg8")
 
 [node name="Player Laser" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 100, 1)
 z_index = -1
 texture = ExtResource("2_0ag6d")
